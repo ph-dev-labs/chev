@@ -1,0 +1,830 @@
+﻿.vlcc-module .panels-container .card-link:hover {
+    text-decoration: none;
+}
+
+#footer {
+    position:relative;
+    width:100%;
+    z-index:1;
+}
+@media (max-width: 991px) {
+    header {        
+        z-index: 1000;
+        position: relative;
+        width: 100%;
+        background-color: #fff;
+    }
+    .main-content {
+        margin-top: 80px;
+    }
+}
+#vlcc-loader {
+    top:0;
+    height: 100vh;
+    width: 100vw;
+    background-color: #0b2d71;
+    position: fixed;
+    z-index: 99;
+}
+.vlcc-module {
+    position: relative;
+    overflow: hidden;
+    width:100%;
+}
+.vlcc-module .button-container {
+    z-index: 20;
+    position: relative;
+ }
+.vlcc-module .button-container .focus-link {
+
+    float: right;
+    padding-right: 15px;
+}
+.vlcc-module .button-container .focus-link a
+{
+    padding: 10px 15px;
+    font-size: 12pt;
+}
+.vlcc-module .intro-path {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100px;
+    /*animation: introdash 2s infinite;*/
+}
+                        
+@keyframes introdash {
+    to {
+    stroke-dashoffset: 0px;
+    }
+}
+.vlcc-module .off .on { display: inline !important;  }
+.vlcc-module .off .off { display: none;  }
+.vlcc-module .focus-link.theme-bg-medium-blue a.theme-bg-color:hover,
+.vlcc-module .focus-link.theme-bg-medium-blue a.theme-bg-color:active {
+    background-color: #fff !important;
+    color: #0066B2 !important;
+    border: 2px solid #009DD9;
+}
+.vlcc-module .focus-link.theme-bg-medium-blue a.theme-bg-color:focus {
+    background-color:#0066B2 !important;
+    color: #fff !important;
+    border: none;
+    outline-offset:2px;
+}
+.vlcc-module .width-675 {
+    max-width: 675px;
+}
+.vlcc-module .canvas-container {
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    background-color: #203845;
+    background: linear-gradient(rgba(30, 30, 30, 0.3), rgba(30, 30, 30, 0.3)), url('../js/lib/threejs/textures/water/water-arial-1024.jpg') repeat;
+    background-size: cover;
+}
+.vlcc-module .canvas-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+.vlcc-module .background-container {
+    background-color: transparent;
+    background-repeat: repeat;
+    background-attachment: fixed;
+    width: 100%;
+    height: 100%;
+    /*padding: 0 20px;*/
+}
+.vlcc-module .section {
+    text-align: center;
+    font-size: larger;
+    background-color: transparent;
+    z-index: 2;
+}
+.vlcc-module #text-intro {    
+    height: 85vh;
+    min-height: 85vh; 
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.vlcc-module #text-intro .intro-line .small {
+    font-size: 1.6rem;
+}
+.vlcc-module #text-intro .top-text {
+    margin-top: auto;
+    width:100%;
+}
+.vlcc-module #text-intro .bottom-text { 
+    width: 100%;
+    margin-top: auto;
+}
+.vlcc-module .section > div {
+    z-index: 2;
+}
+.vlcc-module .section h1,
+.vlcc-module .section h2 {
+    font-size: 2.3em;
+    line-height: 1.1em;
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+.vlcc-module .text-animate-container .header-animate,
+.vlcc-module .text-animate-container .text-animate
+{
+    opacity: 0;
+}
+.vlcc-module .section p {
+    font-size: 1.15em;
+    line-height: 1.45em;
+}
+@media (max-width: 991px) {
+    .vlcc-module .section p {
+        font-size: 0.95em;
+        line-height: 1.75em;
+    }
+}
+.vlcc-module .text-section {
+    min-height: 100vh;
+    position:relative;
+    z-index: 20;
+}
+@media (max-width: 991px) {
+    .vlcc-module .text-section {
+        padding: 0 20px;
+    }
+}
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+     /* IE10+ CSS styles go here */
+    .vlcc-module .text-section {
+        height: 100vh;
+        -ms-flex-direction: column;
+    }
+        .vlcc-module .section {
+        -ms-flex-direction: column;
+    }
+        .vlcc-module #text-intro {
+        -ms-flex-direction: row;
+
+        }
+}
+.vlcc-module .fade-in { 
+    opacity: 0;
+    transition:opacity 1.0s ease-in;
+}
+.vlcc-module .fade-in.show { 
+    opacity: 1;
+}
+/*.vlcc-module #text-1 {
+    opacity:1;
+    display:flex;
+    align-items: center;
+}*/
+.vlcc-module .ship-inner {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+.vlcc-module #eiffel-mobile {
+    position: relative;
+    margin-top:100vh;
+    margin-bottom:50vh;
+}
+.vlcc-module #ship-container {
+    position: relative;
+    min-height: 3060px;
+    text-align:center;
+    width:auto;
+    z-index: 2;
+    /*border: 1px solid green;*/
+} 
+.vlcc-module .eiffel {
+    /*border: 1px solid orange;*/
+    top: auto;
+    bottom: 0;
+    z-index: 2;
+}
+@media (max-width: 991px) {
+    /*.vlcc-module #ship-container {        
+        margin-bottom: 50vh;
+    }*/
+    .vlcc-module .ship-inner #ship-image {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 0 auto;
+    }
+    .vlcc-module #ship-image-mobile-small {        
+        height: 536px;
+    }
+    .vlcc-module .eiffel {
+        bottom: auto;
+        top: 0;
+        margin-top: 75vh;
+    }
+    .vlcc-module #eiffel-mobile .bottom-row .eiffel-container {
+        display: inline-flex;
+        float:none;
+        align-items: flex-end;
+        padding:0;
+    }
+    .vlcc-module #eiffel-mobile .bottom-row .small-ship-container {
+        padding: 0;
+        justify-content: flex-end;
+    }
+}
+@media (max-height: 560px) {
+    
+    .vlcc-module #eiffel-mobile .bottom-row .col {
+        align-items: flex-end;
+    }
+}
+@media (max-width: 767px) {
+    .vlcc-module #text-intro .focus-link a {
+        display: inline-block;
+    }
+    .vlcc-module #eiffel-mobile .bottom-row {
+        white-space:nowrap;
+    }
+}
+.vlcc-module .eiffel .svg-container {
+    justify-content: flex-start;
+}
+.vlcc-module .eiffel .eiffel-container {    
+    justify-content: flex-end;
+}
+.vlcc-module .eiffel .svg-container.right {
+    padding-left: 10px;
+}
+
+@media (max-width: 991px) {
+    .vlcc-module .eiffel .eiffel-container {    
+        justify-content: flex-start;
+    }
+    .vlcc-module .eiffel .svg-container.right {
+        justify-content: flex-end;
+        padding-right: 10px;
+        padding-left: 0;
+    }
+}
+.vlcc-module .eiffel .line {
+    height: 100%;
+    overflow: visible;
+}
+.vlcc-module .eiffel .line .svg-text {
+    opacity: 0;
+}
+.vlcc-module .eiffel .col {
+    height: 536px;
+}
+.vlcc-module .eiffel .left-text {
+    font-size: 1.5em;
+    line-height: 1.2em;
+}
+.vlcc-module .eiffel .left-text .large {
+    font-size: 13em;
+    line-height: 1em;
+}
+
+@media (max-width: 991px) {
+    .vlcc-module .eiffel .left-text .large {
+        font-size: 5em;
+    }
+    .vlcc-module .eiffel .col {
+        padding:0;
+    }
+}
+   /*need to dynamically set min-height = small-ship-height + port height + buffer*/
+.vlcc-module #port-container {    
+    position: relative;
+    overflow: hidden;
+    z-index:2;
+}
+/*need to dynamically set port height + buffer*/
+.vlcc-module #ship-small {
+    position: absolute;
+    top:auto;
+    bottom: 0;
+    z-index:1;
+}
+/*@media (max-width: 991px) {
+    .vlcc-module #ship {
+        transition: transform 0.5s ease-out;
+        bottom:auto;
+        top: 0;
+    }
+
+    .vlcc-module #ship.sail-away {
+        transform-origin: left bottom 0px !important;
+        transform: translateY(-100vw) !important;
+    }
+    .vlcc-module #ship.sail-left {
+        transform-origin: left bottom 0px !important;
+        transform: translate(-25vw, -1950px) !important;
+        opacity: 1;
+    }
+    .vlcc-module #ship.sail-left img {
+        transform: scale(calc(536 / 3060)) !important;
+    }
+
+    .vlcc-module #ship.show {
+        opacity: 1
+    }
+
+    .vlcc-module #ship.left + .eiffel .svg-container:first-child {
+        margin-left: 40%;
+    }
+}*/
+.vlcc-module #ship-small .ship-image {
+    height: 536px;
+    transform: rotate(180deg);
+}
+.vlcc-module #port {
+    z-index:10;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    /*margin-left: -20px;
+    margin-right: -20px;
+    border: 1px solid orange;
+    position:absolute;
+    bottom: 0;*/
+}
+.vlcc-module #port img {
+    padding-left:45px;
+}
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+
+    .vlcc-module #port  {
+        -ms-flex-direction: column;
+    }
+    .vlcc-module #port img {
+        padding-left:0;
+    }
+}
+
+.vlcc-module .clouds-container {
+    position: absolute;
+    top: -50vh;
+    z-index: 3;
+    width: 100%;
+    height: 100vh;
+    /*margin-left: -20px;
+    margin-right: -20px;*/
+}
+/**/.vlcc-module .clouds-container img {
+    max-width: 100%;
+}
+
+.vlcc-module .cloud {
+    position:absolute;
+    display: none;
+}
+
+.vlcc-module #clouds-left {
+    position: relative;
+    margin-left: -25% !important;
+    width: calc(50% - 20px);
+    float: left;
+}
+.vlcc-module #clouds-right {
+    position: relative;
+    margin-right: -25% !important;
+    width: calc(50% - 20px);
+    float: right;
+}
+.vlcc-module .cloud-track.horizontal {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 806px;
+}
+.vlcc-module .cards-container {
+    z-index:10;
+    position:relative;
+    width:100%;
+}
+.vlcc-module .cards-container .card {
+    width: 351px;
+    max-width:100%;
+    height: 310px;
+    clear:both;
+    float: left;
+    margin: 50% 0 0 10%;
+    margin-left: calc(((50vw - (500px / 2) - (351px / 2)) / 2) - 30px);
+    padding: 25px;
+}
+.vlcc-module .cards-container .card-right {
+    float: right;
+    margin-right: calc(((50vw - (500px / 2) - (351px / 2)) / 2) - 30px);
+}
+@media (max-width: 991px) {    
+    .vlcc-module .cards-container .card {
+        margin-left: calc(((50% - (300px / 2) - (350px / 2)) / 2) - 30px);
+    }
+    .vlcc-module .cards-container .card-right {
+        margin-right: calc(((50% - (300px / 2) - (350px / 2)) / 2) - 30px);
+    }
+}
+@media (max-width: 767px) {
+    .vlcc-module .cards-container {
+        float: left;
+    }
+    .vlcc-module .cards-container .card {
+        float: none;
+        margin: 50% auto 0;
+    }
+}
+.vlcc-module .cards-container .card p.cardheader-3 { /* Updated Card H3 elements per ADA to para tags */
+    font-size: 1em;
+    line-height: 1.5em;
+    margin-bottom: 12px;
+    text-align: center;
+    font-family: "GothamBold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.vlcc-module .cards-container .card .large {
+    font-size: 4em;
+    line-height: 1.3em;
+}
+.vlcc-module .cards-container .card p {
+    text-align: center;
+}
+.vlcc-module .horizontal-scroll {
+    position: relative;
+}
+.vlcc-module #side-ship-pin { 
+    /*margin-left: -20px;
+    margin-right: -20px;*/
+    width:100%;
+    overflow: visible;
+    position: relative;
+    z-index:2;    
+}
+.vlcc-module #side-cloud {
+    margin-left: -20px;
+    margin-right: -20px;
+    background: linear-gradient(to bottom, transparent 150px, #497e9e 50%, #497e9e 75%, #fff 100%);
+    height: 806px;
+}
+.vlcc-module #side-cloud > img {
+    position: relative;
+    left: calc(50vw - 2955px / 2);
+    width: 2955px;
+}
+.vlcc-module #side-cloud .section {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -75%);
+}
+.vlcc-module #side-cloud h2 {
+    font-size: 2.3em;
+}
+.vlcc-module #side-cloud p {
+    font-size: 1.15em;
+    line-height: 1.5em;
+}
+.vlcc-module #side-ship-panels {
+    margin-left: -20px;
+    margin-right: -20px;
+    top: -447px;
+    margin-top: 447px;
+    background: linear-gradient(to bottom, #203845 50%, transparent 75%);  
+}
+.vlcc-module #side-ship-panels .side-ship-container {
+    position:relative;
+    left: 100%;
+    top: -350px;
+    right: auto;
+    width: calc(2000 * (100vh - 400px - 50px - 30px)/427);
+    max-width: 2000px;
+    margin-bottom: -350px;
+}
+.vlcc-module #side-ship-image {
+    margin-top: 5px;
+}
+.vlcc-module .panels-container {
+    position: relative;
+}
+.vlcc-module .panels-container .row {
+    display:flex;
+    margin-bottom: 100px;
+}
+.vlcc-module .panels-container .col {
+    height: 400px;
+}
+.vlcc-module .panels-container .image-container {
+    padding: 0;
+    overflow:hidden
+}
+.vlcc-module .panels-container .text-container {
+    flex: 1;
+}
+.vlcc-module .panels-container #slide-1 .text-container .vertical-middle {
+    opacity: 0;
+}
+.vlcc-module .panels-container .background {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+}
+.vlcc-module .panels-container .header {
+    font-size: 1.6em;
+    line-height: 1.4em;
+}
+.vlcc-module .panels-container p {
+    font-size: 0.9em;
+    line-height: 1.75em;
+}
+.vlcc-module .panels-container p.small {
+    font-size: 0.75em;
+}
+.vlcc-module .panels-container .card-link {
+    -webkit-box-shadow: 2px 2px 0 0 #dbdcdd;
+    -moz-box-shadow: 2px 2px 0 0 #dbdcdd;
+    box-shadow: 2px 2px 0 0 #dbdcdd;
+}
+.vlcc-module .panels-container .card-link:hover {
+    -webkit-box-shadow: 0 12px 17px 2px rgba(0,0,0,0.06), 0 5px 22px 4px rgba(0,0,0,0.06), 0 7px 8px -4px rgba(0,0,0,0.10);
+    -moz-box-shadow: 0 12px 17px 2px rgba(0,0,0,0.06), 0 5px 22px 4px rgba(0,0,0,0.06), 0 7px 8px -4px rgba(0,0,0,0.10);
+    box-shadow: 0 12px 17px 2px rgba(0,0,0,0.06), 0 5px 22px 4px rgba(0,0,0,0.06), 0 7px 8px -4px rgba(0,0,0,0.10);
+}
+.vlcc-module .panels-container .card-link .header > span {
+    background-image: linear-gradient(to right, #009DD9, #009DD9);
+    background-position: bottom left;
+    background-repeat: no-repeat;
+    background-size: 0 2px;
+    transition: background-size .5s ease;
+}
+.vlcc-module .panels-container .card-link:hover .header {
+    text-decoration: none;    
+}
+.vlcc-module .panels-container .card-link:hover .header > span {
+    background-size: 100% 2px;    
+}
+.vlcc-module .panels-container .card-link .background {
+   -ms-transition: -webkit-transform 0.5s;
+   -moz-transition: -webkit-transform 0.5s;
+   -webkit-transition: -webkit-transform 0.5s;
+   transition: transform 0.5s; 
+}
+.vlcc-module .panels-container .card-link:hover .background {
+    -ms-transform: scale(1.02);
+    -moz-transform: scale(1.02);
+    -webkit-transform: scale(1.02);
+    transform: scale(1.02);
+}
+
+@media (min-width: 992px) {
+    .vlcc-module .panels-container .image-container {
+        padding: 0;
+    }
+}
+.vlcc-module #side-ship-panels .panels-container {    
+    overflow:hidden;
+    height: 400px;
+    max-height:400px;
+    top:25px;
+}
+.vlcc-module #side-ship-panels .panels-container .row {
+    margin-bottom: 0;
+}
+@media (max-width: 991px) {
+    .vlcc-module #side-ship-panels .panels-container {
+        height: 680px;
+        max-height:none;
+        padding: 0 20px;
+    }    
+    .vlcc-module .panels-container {
+        max-width: 690px;
+    }
+    .vlcc-module .panels-container .responsive-container {
+        height: calc((100vw - 60px) * 400 / 690);
+        max-height: 400px;
+    }
+    .vlcc-module .panels-container .text-container {
+        height: auto;
+    }
+}
+@media (max-width: 767px) {
+    .vlcc-module #side-ship-panels .panels-container .image-container {
+        height: 162px;
+    }
+    .vlcc-module #side-ship-panels .panels-container .text-container {
+        height: 238px;
+    }
+    .vlcc-module #side-ship-panels .panels-container .header { font-size: 1.25em; }
+    .vlcc-module #side-ship-panels .panels-container p { line-height: 1.25em; }
+}
+.vlcc-module #side-ship-panels .slide {
+    height: 100%;
+    width: 100%;
+    float: left;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.vlcc-module #side-ship-panels .lateral-water {
+    position:absolute;
+    z-index:3;
+    background: linear-gradient(to bottom, #203845 25%, transparent 75%);
+    opacity: .5;
+    min-height:120px;
+    width:100%;
+}
+.vlcc-module #side-ship {
+    left: 100%;
+}
+.vlcc-module #side-ship .ship-target {
+    display:none;
+}
+.vlcc-module #side-ship .ship-target.active {
+    display:inline;
+}
+.vlcc-module #side-ship .ship-target > .outer,
+.vlcc-module #side-ship .ship-target > .inner {
+    /*r: 0;*/
+    transform-origin: 31px 31px;
+}
+.vlcc-module #side-ship .ship-target.active > circle {
+    animation-duration: 0.85s;
+    animation-name: changeSizeOuter;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-out;
+}
+.vlcc-module #side-ship .ship-target.active > .inner {    
+    animation-name: changeSizeInner;
+}
+@keyframes changeSizeOuter {
+    from {
+        transform:scale(.1);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+@keyframes changeSizeInner {
+    from {
+        transform: scale(.1);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+.vlcc-module .side-ship-container .svg-container {
+    display: inline-block;
+    position: relative;
+    /*width: 100%;*/
+    height: 427px;
+    /*This is the 100% of the height/width of map image - allows svg to be responsive */
+    padding-bottom: calc(100% * 427 / 2000);
+    vertical-align: middle;
+    overflow: hidden;
+}
+
+/*Text rollups*/
+.vlcc-module .rollup-container {
+    font-size: 2.3em;
+    line-height: 1.1em;
+    margin-bottom: 10vh;
+}
+.vlcc-module .rollup-container .rollup {
+    font-weight: 700;
+}
+
+@media (max-width: 767px) {
+    .vlcc-module .rollup-container {
+        font-size: 1.25em;
+    }
+}
+.vlcc-module .rollup-container .rollup {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.vlcc-module .rollup-container .list {
+    margin: 0 0 0 0 ;
+    padding: 0;
+    display: block;
+    height: 1.05em;
+    line-height: 1.05em;
+}
+.rollup-container ul,
+.rollup-container li {
+    margin: 0;
+    padding: 0;
+}
+
+.rollup-container .container-list,
+.rollup-container .container-list ul {
+    font-size: calc( 40px + (300 - 40) * ( (100vw - 320px) / ( 1200 - 320) ));
+    display: inline-block;
+}
+
+    .rollup-container .container-list ul {
+        margin-top: 0;
+    }
+
+    .rollup-container .container-list li {
+        list-style: none;
+    }
+
+#rollup-2 {
+    font-family: sans-serif;
+    font-size: 44px;
+    color: #fff;
+    width: auto;
+    padding: .125em;
+    overflow: hidden;
+    position: relative;
+}
+
+#digit-1 li {
+    letter-spacing: -.05em;
+}
+
+#digit-2 li {
+    letter-spacing: -.1em;
+}
+
+#digit-comma {
+    margin-left: -.05em;
+}
+.vlcc-module.vlcc-module-bottom {
+    z-index:20;
+    padding: 30px;
+}
+.vlcc-module.custom-background {
+    
+    background: linear-gradient(to bottom, transparent 0, #fff 400px);
+}
+.vlcc-module.vlcc-module-bottom .cloud-divider {
+    background: linear-gradient(to bottom, transparent 0, #fff 50%);
+    margin: 0 -30px;    
+    max-height:450px;
+}
+.vlcc-module.vlcc-module-bottom .cloud-divider > img {
+    width: 100%;
+    min-height:495px;
+}
+
+.vlcc-module.vlcc-module-bottom .map-container .svg-container { 
+	display: inline-block;
+	position: relative;
+	width: 100%;
+    /*This is the 100% of the height/width of map image - allows svg to be responsive */
+	padding-bottom: calc(100% * 842 / 1406); 
+	vertical-align: middle; 
+	overflow: hidden; 
+}
+.vlcc-module.vlcc-module-bottom .map-container .svg-content { 
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.vlcc-module.vlcc-module-bottom .map-container .map-target {
+    opacity: 0;
+}
+.vlcc-module.vlcc-module-bottom .map-container #route-1 {
+    stroke-dasharray: 1270;
+    stroke-dashoffset: 1270px;
+}
+.vlcc-module.vlcc-module-bottom .map-container #route-2 {
+    stroke-dasharray: 436;
+    stroke-dashoffset: 436px;
+}
+.vlcc-module.vlcc-module-bottom .map-container #route-3 {
+    stroke-dasharray: 660;
+    stroke-dashoffset: 660px;
+}
+.vlcc-module.vlcc-module-bottom .map-container #route-4 {
+    stroke-dasharray: 588;
+    stroke-dashoffset: 588px;
+}
+
+.vlcc-module.vlcc-module-bottom .panels-container .panel-animate {
+    transform: translateY(150px);
+}
+.vlcc-module.vlcc-module-bottom .panels-container .panel-animate .vertical-middle {
+    opacity:0;
+}
+
+.vlcc-module.vlcc-module-bottom .panels-container .panel-animate .vertical-middle p {
+    transform: translateY(15px);
+}
+
+/*loader*/
+.vlcc-module #loader-radar {
+    -webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 4s linear infinite;
+    transform-origin:center;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { transform:rotate(360deg); } }

@@ -1,0 +1,45 @@
+/* @import must be at top of file, otherwise CSS will not work */
+@import url("https://cdn.fonts.net/t/1.css?apiType=css&amp;projectid=f4c72400-1179-11ed-b0a0-02c6998740a0");
+  
+@font-face {
+  font-family: "GothamNarrowBook";
+  font-style: normal;
+  font-stretch: condensed;
+  font-display: swap;
+  src: url('gothamnarrowbook_normal_condensed.woff2') format('woff2'), url('gothamnarrowbook_normal_condensed.woff') format('woff');
+}
+@font-face {
+  font-family: "GothamNarrowBold";
+  font-style: normal;
+  font-stretch: condensed;
+  font-display: swap;
+  src: url('gothamnarrowbold_normal_condensed.woff2') format('woff2'), url('gothamnarrowbold_normal_condensed.woff') format('woff');
+}
+@font-face {
+  font-family: "GothamBold";
+  font-style: normal;
+  font-stretch: normal;
+  font-display: swap;
+  src: url('gothambold_normal_normal.woff2') format('woff2'), url('gothambold_normal_normal.woff') format('woff');
+}
+@font-face {
+    font-family: "GothamNarrowBookItalic";
+    font-style: italic;
+    font-stretch: condensed;
+    font-display: swap;
+    src: url('gothamnarrowbookitalic_italic_condensed.woff2') format('woff2'), url('gothamnarrowbookitalic_italic_condensed.woff') format('woff');
+}
+@font-face {
+  font-family: "GothamBlack";
+  font-style: normal;
+  font-stretch: normal;
+  font-display: swap;
+  src: url('gothamblack_normal_normal.woff2') format('woff2'), url('gothamblack_normal_normal.woff') format('woff');
+}
+@font-face {
+  font-family: "GothamBook";
+  font-style: normal;
+  font-stretch: normal;
+  font-display: swap;
+  src: url('gothambook_normal_normal.woff2') format('woff2'), url('gothambook_normal_normal.woff') format('woff');
+}

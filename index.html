@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" xmlns:fb="ogp.me/ns/fb#" lang="en" xml:lang="en" class="no-js">
+<head>
+    <meta charset="utf-8" />
+    <title>Employee Directory &mdash; Chevron</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Chevron Policy, Government and Public Affairs" />
+    <meta name="coverage" content="Global" />
+    <meta name="format" content="text/html" />
+    <meta name="language" content="en" />
+    <meta name="rights" content="Copyright Chevron Corporation 2025" />
+    <meta name="robots" content="index, follow, noodp, noydir" />
+    <meta name="title" content="Employee Directory" />
+    <meta name="description" content="Meet our global team of professionals driving innovation and excellence across Chevron's energy operations worldwide." />
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/fav/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/fav/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/fav/favicon-16x16.png">
+    <link rel="shortcut icon" href="/assets/fav/favicon.ico">
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        /* Chevron Brand Colors - Exact from original */
+        :root {
+            --color-dark-blue: #0b2d71;
+            --color-medium-blue: #1e5aa8;
+            --color-light-blue: #4a90e2;
+            --color-dark-red: #8b1538;
+            --color-medium-red: #c41e3a;
+            --color-light-red: #ff6b6b;
+            --color-dark-teal: #0d5257;
+            --color-medium-teal: #167a82;
+            --color-light-teal: #4ecdc4;
+            --color-dark-purple: #4a1c68;
+            --color-medium-purple: #7b3f98;
+            --color-light-purple: #a569bd;
+            --color-dark-green: #2d5016;
+            --color-medium-green: #4a7c29;
+            --color-light-green: #7fb069;
+            --color-offwhite: #f8f9fa;
+            --color-white: #ffffff;
+            --color-dark-gray: #212529;
+            --color-medium-gray: #6c757d;
+            --color-light-gray: #adb5bd;
+        }
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Gotham', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--color-dark-gray);
+            background-color: var(--color-offwhite);
+        }
+
+        .container-fluid {
+            width: 100%;
+            padding: 0;
+        }
+
+        .width-1200 {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .width-1400 {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .centered {
+            margin: 0 auto;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-elevated {
+            font-weight: 600;
+        }
+
+        .text-reduced {
+            font-size: 0.9rem;
+        }
+
+        .text-base {
+            font-size: 1rem;
+        }
+
+        /* Typography - Chevron Style */
+        .type-display {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            text-transform: lowercase;
+            letter-spacing: -1px;
+        }
+
+        .type-header {
+            font-size: 2.25rem;
+            font-weight: 700;
+            line-height: 1.2;
+            text-transform: lowercase;
+        }
+
+        .type-subheader {
+            font-size: 1.75rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .type-body {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .type-cta {
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: lowercase;
+        }
+
+        .type-navigation {
+            font-size: 1rem;
+            font-weight: 500;
+            text-transform: lowercase;
+        }
+
+        /* Color Classes */
+        .color-light-blue { color: var(--color-light-blue) !important; }
+        .color-light-red { color: var(--color-light-red) !important; }
+        .color-light-teal { color: var(--color-light-teal) !important; }
+        .color-light-purple { color: var(--color-light-purple) !important; }
+        .color-light-green { color: var(--color-light-green) !important; }
+        .color-important { color: inherit !important; }
+
+        .background-color-white { background-color: var(--color-white); }
+        .background-color-offwhite { background-color: var(--color-offwhite); }
+        .background-color-dark-blue { background-color: var(--color-dark-blue); color: var(--color-white); }
+        .background-color-dark-red { background-color: var(--color-dark-red); color: var(--color-white); }
+        .background-color-dark-teal { background-color: var(--color-dark-teal); color: var(--color-white); }
+        .background-color-dark-purple { background-color: var(--color-dark-purple); color: var(--color-white); }
+        .background-color-dark-green { background-color: var(--color-dark-green); color: var(--color-white); }
+        .background-color-medium-blue { background-color: var(--color-medium-blue); color: var(--color-white); }
+        .background-color-dark-gray { background-color: var(--color-dark-gray); color: var(--color-white); }
+
+        /* Navigation - Exact from Chevron */
+        .nav-2023 {
+            background-color: var(--color-white);
+            border-bottom: 1px solid #dee2e6;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .nav-2023-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+        }
+
+        .nav-2023-hallmark img {
+            height: 48px;
+            width: auto;
+        }
+
+        .nav-2023-list {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            margin: 0;
+        }
+
+        .nav-2023-link {
+            text-decoration: none;
+            color: var(--color-dark-gray);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 1rem;
+            text-transform: lowercase;
+        }
+
+        .cta-underline {
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .nav-2023-link:hover .cta-underline {
+            border-color: var(--color-dark-blue);
+        }
+
+        /* Hero Section - C74 Style */
+        .c74 {
+            position: relative;
+            overflow: hidden;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .background-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+        }
+
+        .gradient-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(11, 45, 113, 0.8) 0%, rgba(30, 90, 168, 0.7) 100%);
+        }
+
+        .parent-container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .text-window-container {
+            margin-bottom: 1.5rem;
+        }
+
+        .text-window {
+            color: var(--color-white);
+        }
+
+        .description-container .description {
+            color: var(--color-white);
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.25rem;
+        }
+
+        /* Search Section - Simplified */
+        .search-section {
+            background-color: var(--color-white);
+            padding: 2rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 80px;
+            z-index: 999;
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .search-box {
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 3rem;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--color-dark-blue);
+            box-shadow: 0 0 0 3px rgba(11, 45, 113, 0.1);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--color-medium-gray);
+        }
+
+        /* Employee Grid - Professional Design */
+        .employees-section {
+            padding: 4rem 0;
+        }
+
+        .employees-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .employee-card {
+            background-color: var(--color-white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .employee-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+
+        /* Professional Employee Header */
+        .employee-header {
+            padding: 2.5rem 2rem;
+            background: linear-gradient(135deg, var(--color-dark-blue) 0%, var(--color-medium-blue) 100%);
+            color: white;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .employee-avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 4px solid rgba(255,255,255,0.2);
+            background-color: var(--color-white);
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .employee-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .employee-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .employee-position {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        .employee-details {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .employee-department {
+            display: inline-block;
+            font-size: 0.75rem;
+            color: var(--color-dark-blue);
+            background-color: rgba(11, 45, 113, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            border: 1px solid rgba(11, 45, 113, 0.2);
+        }
+
+        .employee-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .info-item {
+            text-align: center;
+        }
+
+        .info-label {
+            font-size: 0.75rem;
+            color: var(--color-medium-gray);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .info-value {
+            font-weight: 700;
+            color: var(--color-dark-gray);
+            font-size: 1rem;
+        }
+
+        .employee-contact {
+            margin-top: auto;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            background-color: var(--color-offwhite);
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background-color: rgba(11, 45, 113, 0.05);
+        }
+
+        .contact-icon {
+            width: 16px;
+            height: 16px;
+            color: var(--color-dark-blue);
+            flex-shrink: 0;
+        }
+
+        .contact-item a {
+            color: var(--color-dark-gray);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--color-dark-blue);
+        }
+
+        .contact-text {
+            color: var(--color-dark-gray);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Stats Section - C60 Style */
+        .stats-section {
+            background-color: var(--color-dark-blue);
+            color: var(--color-white);
+            padding: 3rem 0;
+            margin: 4rem 0 0;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            min-width: 200px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+            text-transform: lowercase;
+            font-weight: 500;
+        }
+
+        /* Footer - Chevron Style */
+        .footer-2023 {
+            background-color: var(--color-dark-blue);
+            color: var(--color-white);
+            padding: 3rem 0 2rem;
+        }
+
+        .main-row {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .left-col {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .left-col img {
+            height: 60px;
+            margin-bottom: 1rem;
+        }
+
+        .right-col {
+            flex: 2;
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 1rem;
+        }
+
+        .accordion-button {
+            background: none;
+            border: none;
+            color: var(--color-white);
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: lowercase;
+            padding: 1rem 0;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .accordion-collapse {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-collapse.show {
+            max-height: 500px;
+        }
+
+        .accordion-list-item {
+            margin-bottom: 0.75rem;
+        }
+
+        .accordion-link {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .accordion-link:hover {
+            color: var(--color-white);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .nav-2023-list {
+                display: none;
+            }
+            
+            .type-display {
+                font-size: 2.5rem;
+            }
+            
+            .employees-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .employee-info {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .stats-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .stat-item {
+                min-width: auto;
+            }
+            
+            .main-row {
+                flex-direction: column;
+            }
+
+            .employees-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .employee-card {
+                margin: 0 auto;
+                max-width: 400px;
+            }
+        }
+
+        /* Loading Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .employee-card {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        /* CTA Link styles for consistency */
+        .cta-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: inherit;
+            font-weight: 600;
+            text-transform: lowercase;
+            transition: all 0.3s ease;
+        }
+
+        .cta-glyphicon {
+            transition: transform 0.3s ease;
+        }
+
+        .cta-link:hover .cta-glyphicon {
+            transform: translateX(4px);
+        }
+    </style>
+</head>
+
+<body class="body-who-we-are" ontouchstart="">
+    <div id="main-wrapper" class="container-fluid">
+        <!-- Navigation -->
+        <header class="nav-2023" id="nav" data-cvx-module-name="nav">
+            <nav class="nav-2023-nav width-1200">
+                <a class="nav-2023-hallmark" href="#">
+                    <img class="img-fluid" src="https://www.chevron.com/-/media/shared-media/images/hallmark-2023.png" alt="Chevron" />
+                </a>
+                <ul class="nav-2023-list nav-2023-list-level-2">
+                    <li class="nav-2023-item">
+                        <a class="nav-2023-link cta-link type-navigation text-reduced" href="#" target="">
+                            <span class="cta-underline">who we are</span>
+                        </a>
+                    </li>
+                    <li class="nav-2023-item">
+                        <a class="nav-2023-link cta-link type-navigation text-reduced" href="#" target="">
+                            <span class="cta-underline">what we do</span>
+                        </a>
+                    </li>
+                    <li class="nav-2023-item">
+                        <a class="nav-2023-link cta-link type-navigation text-reduced" href="#" target="">
+                            <span class="cta-underline">sustainability</span>
+                        </a>
+                    </li>
+                    <li class="nav-2023-item">
+                        <a class="nav-2023-link cta-link type-navigation text-reduced" href="#" target="">
+                            <span class="cta-underline">investors</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav-2023-list nav-2023-list-level-2 nav-2023-list-right">
+                    <li class="nav-2023-item">
+                        <a href="#" class="cta-link nav-2023-link type-navigation text-reduced" target="">
+                            <span class="cta-underline">newsroom</span>
+                        </a>
+                    </li>
+                    <li class="nav-2023-item">
+                        <a href="#" class="cta-link nav-2023-link type-navigation text-reduced" target="">
+                            <span class="cta-underline">careers</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main role="main" id="main-content" tabindex="-1">
+            <!-- Hero Section -->
+            <div class="r c74 video-common text-center background-color-dark-gray" data-cvx-first-module-no-adjustment="true" data-cvx-module-name="c74">
+                <div class="inner-container text-center" style="margin-top:0px;margin-bottom:0px;">
+                    <div class="gradient-container background-color-gradient"></div>
+                    <div class="background-container"></div>
+                    <div class="parent-container">
+                        <div class="text-window-container">
+                            <h1 class="type-display text-elevated text-window width-1200 centered text-center">employee directory</h1>
+                        </div>
+                        <div class="description-container">
+                            <div class="description type-body text-elevated width-800 centered text-center">
+                                Meet our global team of professionals driving innovation and excellence across Chevron's energy operations worldwide.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search Section -->
+            <!-- <section class="search-section">
+                <div class="search-container width-1200">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="search employees by name or position...">
+                    </div>
+                </div>
+            </section> -->
+
+            <!-- Employees Section -->
+            <section class="employees-section container-fluid background-color-offwhite">
+                <div class="width-1200">
+                    <div id="employeesGrid" class="employees-grid">
+                        <!-- Employee cards will be populated by JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stats Section -->
+            <div class="stats-section container-fluid background-color-dark-blue" data-cvx-module-name="c60">
+                <div class="inner-container centered" style="margin-top:0px;margin-bottom:0px;">
+                    <div class="stats-container width-1200">
+                        <div class="stat-item">
+                            <div class="stat-number">47,000+</div>
+                            <div class="stat-label">global employees</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">180+</div>
+                            <div class="stat-label">countries</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">40%</div>
+                            <div class="stat-label">women in leadership</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">143</div>
+                            <div class="stat-label">years of innovation</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer-2023 container-fluid background-color-dark-blue" data-cvx-module-name="footer">
+            <div class="row main-row width-1200 centered">
+                <div class="left-col">
+                    <div class="image-container">
+                        <img src="https://www.chevron.com/-/media/chevron/Footer/footer-hallmark.svg" class="img-fluid" alt="the human energy company" />
+                    </div>
+                    <div class="description type-body text-reduced">
+                        <p>Chevron has always put people at the center of the energy conversation. Because we understand that the well-being of people everywhere depends on energy. Energy that is affordable, reliable and ever-cleaner.</p>
+                    </div>
+                </div>
+                <div class="right-col">
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <button class="accordion-button type-cta text-reduced" onclick="toggleAccordion(0)">get to know us</button>
+                            <ul class="accordion-collapse" id="collapse-0">
+                                <li class="accordion-list-item type-body text-reduced">
+                                    <a href="#" class="cta-link accordion-link"><span class="cta-underline">contact us</span></a>
+                                </li>
+                                <li class="accordion-list-item type-body text-reduced">
+                                    <a href="#" class="cta-link accordion-link"><span class="cta-underline">find a service station</span></a>
+                                </li>
+                                <li class="accordion-list-item type-body text-reduced">
+                                    <a href="#" class="cta-link accordion-link"><span class="cta-underline">chevron texaco rewards</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright width-1200 centered">
+                <p>&copy; 2025 Chevron Corporation. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Professional employee data with realistic positions and departments
+        const employees = [
+            {
+                id: 1,
+                name: "Sarah Johnson",
+                position: "Chief Technology Officer",
+                department: "technology",
+                location: "San Ramon, CA",
+                email: "sarah.johnson@chevron.com",
+                phone: "+1 (925) 842-1000",
+                avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b829?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                level: "Executive",
+                years: 15
+            },
+            {
+                id: 2,
+                name: "Michael Rodriguez",
+                position: "Vice President, Upstream Operations",
+                department: "exploration",
+                location: "Houston, TX",
+                email: "michael.rodriguez@chevron.com",
+                phone: "+1 (713) 372-4000",
+                avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                level: "Executive",
+                years: 18
+            },
+            {
+                id: 3,
+                name: "Emma Thompson",
+                position: "Director, Environmental Affairs",
+                department: "environment",
+                location: "London, UK",
+                email: "emma.thompson@chevron.com",
+                phone: "+44 20 7499 5000",
+                avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                level: "Senior Management",
+                years: 12
+            },
+            {
+                id: 4,
+                name: "David Chen",
+                position: "Senior Process Engineer",
+                department: "refining",
+                location: "Singapore",
+                email: "david.chen@chevron.com",
+                phone: "+65 6311 8888",
+                avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                level: "Senior",
+                years: 8
+            },
+            {
+                id: 5,
+                name: "Olivia Martinez",
+                position: "Global HR Business Partner",
+                department: "hr",
+                location: "Houston, TX",
+                email: "olivia.martinez@chevron.com",
+                phone: "+1 (713) 372-4000",
+                avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                level: "Management",
+                years: 10
+            },
+            {
+                id: 6,
+                name: "James Wilson",
+                position: "Senior Financial Analyst",
+                department: "finance",
+                location: "San Ramon, CA",
+                email: "james.wilson@chevron.com",
+                phone: "+1 (925) 842-1000",
+                avatar: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                level: "Senior",
+                years: 6
+            },
+            {
+                id: 7,
+                name: "Sophia Kim",
+                position: "Principal Geoscientist",
+                department: "exploration",
+                location: "Perth, Australia",
+                email: "sophia.kim@chevron.com",
+                phone: "+61 8 9216 4000",
+                avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                level: "Principal",
+                years: 11
+            },
+            {
+                id: 8,
+                name: "Benjamin Taylor",
+                position: "Regional Marketing Manager",
+                department: "marketing",
+                location: "London, UK",
+                email: "benjamin.taylor@chevron.com",
+                phone: "+44 20 7499 5000",
+                avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                level: "Management",
+                years: 9
+            },
+            {
+                id: 9,
+                name: "Rachel Anderson",
+                position: "Production Operations Manager",
+                department: "production",
+                location: "Houston, TX",
+                email: "rachel.anderson@chevron.com",
+                phone: "+1 (713) 372-4000",
+                avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                level: "Management",
+                years: 13
+            },
+            {
+                id: 10,
+                name: "Alexander Patel",
+                position: "Digital Innovation Lead",
+                department: "technology",
+                location: "San Ramon, CA",
+                email: "alexander.patel@chevron.com",
+                phone: "+1 (925) 842-1000",
+                avatar: "https://images.unsplash.com/photo-1566492031773-4f4e44671d66?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                level: "Senior",
+                years: 7
+            },
+            {
+                id: 11,
+                name: "Maria Santos",
+                position: "Environmental Compliance Manager",
+                department: "environment",
+                location: "Houston, TX",
+                email: "maria.santos@chevron.com",
+                phone: "+1 (713) 372-4000",
+                avatar: "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                level: "Management",
+                years: 8
+            },
+            {
+                id: 12,
+                name: "Robert Chang",
+                position: "Refinery Operations Supervisor",
+                department: "refining",
+                location: "Singapore",
+                email: "robert.chang@chevron.com",
+                phone: "+65 6311 8888",
+                avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                level: "Supervisor",
+                years: 14
+            }
+        ];
+
+        // Function to render employees with professional design
+        function renderEmployees(employeeList) {
+            const grid = document.getElementById('employeesGrid');
+            grid.innerHTML = '';
+            
+            if (employeeList.length === 0) {
+                grid.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 4rem 0; color: var(--color-medium-gray);">
+                        <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                        <h3 style="margin-bottom: 0.5rem;">no employees found</h3>
+                        <p>try adjusting your search criteria</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            employeeList.forEach((employee, index) => {
+                const card = document.createElement('div');
+                card.className = 'employee-card';
+                card.style.animationDelay = `${index * 0.1}s`;
+                
+                card.innerHTML = `
+                    <div class="employee-header">
+                        <div class="employee-avatar">
+                            <img src="${employee.avatar}" alt="${employee.name}" loading="lazy">
+                        </div>
+                        <div class="employee-name">${employee.name}</div>
+                        <div class="employee-position">${employee.position}</div>
+                    </div>
+                    <div class="employee-details">
+                        <div class="employee-department">${employee.department}</div>
+                        <div class="employee-info">
+                            <div class="info-item">
+                                <div class="info-label">experience</div>
+                                <div class="info-value">${employee.years} years</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">level</div>
+                                <div class="info-value">${employee.level}</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">location</div>
+                                <div class="info-value">${employee.location}</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">employee id</div>
+                                <div class="info-value">CVX${String(employee.id).padStart(4, '0')}</div>
+                            </div>
+                        </div>
+                        <div class="employee-contact">
+                            <div class="contact-item">
+                                <i class="fas fa-envelope contact-icon"></i>
+                                <a href="mailto:${employee.email}">${employee.email}</a>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-phone contact-icon"></i>
+                                <span class="contact-text">${employee.phone}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                grid.appendChild(card);
+            });
+        }
+
+        // Function to filter employees with simplified search
+        function filterEmployees() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+            
+            const filtered = employees.filter(employee => {
+                if (!searchTerm) return true;
+                
+                return employee.name.toLowerCase().includes(searchTerm) ||
+                       employee.position.toLowerCase().includes(searchTerm) ||
+                       employee.department.toLowerCase().includes(searchTerm) ||
+                       employee.location.toLowerCase().includes(searchTerm) ||
+                       employee.level.toLowerCase().includes(searchTerm);
+            });
+            
+            renderEmployees(filtered);
+        }
+
+        // Function to toggle accordion sections
+        function toggleAccordion(index) {
+            const collapse = document.getElementById(`collapse-${index}`);
+            const isShown = collapse.classList.contains('show');
+            
+            // Close all accordion sections
+            document.querySelectorAll('.accordion-collapse').forEach(el => {
+                el.classList.remove('show');
+            });
+            
+            // Toggle the clicked section
+            if (!isShown) {
+                collapse.classList.add('show');
+            }
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Render all employees initially
+            renderEmployees(employees);
+            
+            // Add event listener for search with debouncing
+            let searchTimeout;
+            document.getElementById('searchInput').addEventListener('input', () => {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(filterEmployees, 300);
+            });
+            
+            // Add keyboard navigation for accessibility
+            document.addEventListener('keydown', (e) => {
+                if (e.key === '/' && !e.ctrlKey && !e.metaKey && document.activeElement.tagName !== 'INPUT') {
+                    e.preventDefault();
+                    document.getElementById('searchInput').focus();
+                }
+                
+                if (e.ctrlKey || e.metaKey) {
+                    switch(e.key) {
+                        case 'k':
+                            e.preventDefault();
+                            document.getElementById('searchInput').focus();
+                            break;
+                        case 'r':
+                            e.preventDefault();
+                            document.getElementById('searchInput').value = '';
+                            filterEmployees();
+                            break;
+                    }
+                }
+            });
+            
+            // Add smooth scrolling animation observer
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe employee cards for scroll animations
+            setTimeout(() => {
+                document.querySelectorAll('.employee-card').forEach(card => {
+                    observer.observe(card);
+                });
+            }, 100);
+        });
+    </script>
+</body>
+</html>

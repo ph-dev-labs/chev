@@ -1,0 +1,365 @@
+/* Minification failed. Returning unminified contents.
+(72,56-57): run-time error JS1009: Expected '}': [
+(72,78-79): run-time error JS1006: Expected ')': :
+(72,78): run-time error JS1004: Expected ';'
+(72,84-85): run-time error JS1195: Expected expression: )
+(72,85-86): run-time error JS1195: Expected expression: .
+(79,5-13): run-time error JS1006: Expected ')': function
+(276,92-93): run-time error JS1009: Expected '}': [
+(276,114-115): run-time error JS1006: Expected ')': :
+(276,114): run-time error JS1004: Expected ';'
+(276,124-125): run-time error JS1195: Expected expression: ,
+(276,129): run-time error JS1004: Expected ';'
+(276,129-130): run-time error JS1195: Expected expression: )
+(279,9-10): run-time error JS1006: Expected ')': }
+(278,14): run-time error JS1004: Expected ';'
+(279,10-11): run-time error JS1195: Expected expression: )
+(286,41-42): run-time error JS1009: Expected '}': [
+(286,63-64): run-time error JS1006: Expected ')': :
+(286,63): run-time error JS1004: Expected ';'
+(286,69-70): run-time error JS1195: Expected expression: ,
+(291,18): run-time error JS1004: Expected ';'
+(291,18-19): run-time error JS1195: Expected expression: )
+(295,9-10): run-time error JS1006: Expected ')': }
+(294,14): run-time error JS1004: Expected ';'
+(295,10-11): run-time error JS1195: Expected expression: )
+(337,1-2): run-time error JS1002: Syntax error: }
+(337,2-3): run-time error JS1195: Expected expression: )
+ */
+(function (w, d, $) {
+    const mobileBreakpoint = 992;
+    function menuLeave($target, $elem) {
+
+        if ($target.hasClass("level-3") || $target.closest(".dropdown-submenu").hasClass("level-3")) {
+            $elem.closest(".nav-match-height").css("min-height", "");
+            $elem.find(".nav-match-height").css("min-height", "");
+        }
+    }
+    function handleZoom() {
+        const zoom = d.documentElement.clientWidth / w.innerWidth;
+        navZoom(zoom, d.documentElement.clientWidth);
+        navbarHeightFix();
+    }
+    //Fix navbar height when navbar-subsite items wrap and match sub menu heights to parents
+    function navbarHeightFix() {
+        const $navbarSubsite = $(".ews-navbar-subsite");
+        if (w.innerWidth >= mobileBreakpoint) {
+            $navbarSubsite.css("min-height", $navbarSubsite.find(".container-fluid > .navbar-collapse").height() + "px");
+            closeMobileMenus($navbarSubsite);
+        } else {
+            $navbarSubsite.css("min-height", "");
+        }
+    }
+
+    function navZoom(zoom, width) {
+        const $navBarFixedTop = $('.navbar-fixed-top');
+        if (zoom > 1) {
+            $navBarFixedTop.addClass('navbar-zoomed').css("width", width + "px");
+        }
+        else {
+            $navBarFixedTop.removeClass('navbar-zoomed').css("width", "");
+        }
+    }
+    //############################## Begin Mobile Behaviors ##############################
+    const menuSlideDirection = function () {
+        return (document.querySelector("html").getAttribute("dir") === "rtl") ? "left" : "right"; //if language is ltr menu slide from right
+    }
+    function mobileMenuHeight($this) {
+        setTimeout(function () {
+            const $parentMatchHeight = $this.closest(".nav-match-height"),
+                $childMatchHeight = $this.find('.nav-match-height').first(),
+                parentMatchHeighValue = $parentMatchHeight.outerHeight(true),
+                childMatchHeightValue = $childMatchHeight.outerHeight(true),
+                offset = 0;
+            if (parentMatchHeighValue < childMatchHeightValue) {
+                $parentMatchHeight.css("min-height", childMatchHeightValue + offset + "px");
+            } else if (parentMatchHeighValue >= childMatchHeightValue) {
+                $childMatchHeight.css("min-height", parentMatchHeighValue + offset + "px");
+            }
+        }, 100);
+    }
+
+    function clearThisMobileMenuHeight($this) {
+        setTimeout(function () {
+            const $parentMatchHeight = $this.closest(".nav-match-height");
+            $parentMatchHeight.css("min-height", "");
+        }, 500);
+    }
+    function clearAllMobileMenuHeight($this) {
+        setTimeout(function () {
+            $this.find(".nav-match-height").css("min-height", "");
+        }, 500);
+    }
+    function openMobileMenus($navParent) {
+        $('.hamburger-mobile').addClass("open").find(".dropdown-toggle").attr("aria-expanded", true);
+        $navParent.find(".dropdown-menu.navbar-mobile").stop(true, true).slideDown(200, function () {
+            $navParent.find('.mobile-nav-backdrop').height($('body').innerHeight());
+        }).addClass("open");
+    }
+    function closeMobileMenus($navParent) {
+        $navParent.find('.row-offcanvas.active').css({ [menuSlideDirection()]: "" }).toggleClass('active');
+        clearAllMobileMenuHeight($navParent);
+        $navParent.find(".dropdown-menu.navbar-mobile").first().stop(true, true).slideUp(200, function () {
+            $('.hamburger-mobile').removeClass("open").find(".dropdown-toggle").attr("aria-expanded", false);
+        }).removeClass("open");
+    }
+
+    function open($elem, hasClass) {
+        if ($elem.hasClass(hasClass)) {
+            $elem.addClass("open");
+        } else {
+            $elem.closest("." + hasClass).addClass("open");
+        }
+    }
+    function close($elem, hasClass) {
+        if ($elem.hasClass(hasClass)) {
+            $elem.removeClass("open");
+        } else {
+            $elem.closest("." + hasClass).removeClass("open");
+        }
+    }
+    //Handle keyboard, touch thru subsite nav
+    function desktopMenuHeight($this) {
+        const $parentMatchHeight = $this.closest(".nav-match-height"),
+            $childMatchHeight = $this.find('.nav-match-height').first(),
+            parentMatchHeighValue = $parentMatchHeight.outerHeight(true),
+            childMatchHeightValue = $childMatchHeight.outerHeight(true),
+            offset = 0;
+        if (parentMatchHeighValue < childMatchHeightValue) {
+            $parentMatchHeight.css("min-height", childMatchHeightValue + offset + "px");
+            $childMatchHeight.css("min-height", childMatchHeightValue + offset + "px");
+        } else if (parentMatchHeighValue >= childMatchHeightValue) {
+            $parentMatchHeight.css("min-height", parentMatchHeighValue + offset + "px");
+            $childMatchHeight.css("min-height", parentMatchHeighValue + offset + "px");
+        }
+    }
+    function handleStickyNavScroll() {
+        const navbarSticky = $(".ews-navbar-subsite"),
+            navbarFixedClass = "navbar-fixed-top",
+            navbarHeader = $(".ews-navbar-default").height();
+        $(w).scroll(function () {
+            if ($(this).scrollTop() > navbarHeader) {
+                navbarSticky.addClass(navbarFixedClass);
+            } else {
+                navbarSticky.removeClass(navbarFixedClass);
+            }
+        });
+    }
+    function handleDropdownToggleTouchstart($target, e) {
+        if ($target.hasClass("level-2") || $target.closest(".dropdown").hasClass("level-2")) {
+            //Handle touch on top level
+            e.preventDefault();
+            e.stopPropagation();
+            if ($target.hasClass("open") || $target.closest(".dropdown").hasClass("open")) {
+                //If menu is open than navigate to the link
+                let link = "";
+                if ($target.is("a")) {
+                    link = $target.focus().attr("href");
+                } else if ($target.hasClass("link-text") || $target.closest("a").hasClass("arrow-link")) {
+                    link = $target.closest("a").focus().attr("href");
+                } else {
+                    link = $target.find("a").first().focus().attr("href");
+                }
+                w.location.href = link;
+            } else {
+                //If menu is not close all others and open
+                $(".ews-navbar-subsite .primary .dropdown.open").each(function () {
+                    $(this).removeClass("open");
+                });
+                open($target, "dropdown");
+            }
+        }
+    }
+    function handleDropdownToggle() {
+        $(".ews-navbar-subsite .dropdown.level-2 a.dropdown-toggle").on("touchstart focusin keydown mouseenter", function (e) {
+            if (w.innerWidth >= mobileBreakpoint) {
+                const keyCode = e.keyCode || e.which,
+                    eventType = e.type,
+                    $target = $(e.currentTarget);
+                switch (eventType) {
+                    case "touchstart":
+                        handleDropdownToggleTouchstart($target, e);
+                        break;
+                    case "focusin":
+                        $(".ews-navbar-subsite .primary .dropdown.open").each(function () {
+                            $(this).removeClass("open");
+                        });
+                        open($target, "dropdown");
+                        break;
+                    case "keydown":
+                        if (keyCode === 27 || (e.shiftKey && keyCode === 9 && $target.hasClass("dropdown-toggle"))) {
+                            close($target, "dropdown");
+                        }
+                        break;
+                    case "mouseenter":
+                        $(".ews-navbar-subsite .primary .dropdown.open").each(function () {
+                            $(this).removeClass("open");
+                        });
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
+    }
+    function handleLevel3AnchorTouchAndKeyTouchstart($target, e) {
+        if ($target.hasClass("level-3") || $target.closest(".dropdown-submenu").hasClass("level-3")) {
+            //Handle touch on top level
+            e.preventDefault();
+            e.stopPropagation();
+            if ($target.hasClass("open") || $target.closest(".dropdown-submenu").hasClass("open")) {
+                //If menu is open than navigate to the link
+                let link = "";
+                if ($target.is("a")) {
+                    link = $target.focus().attr("href");
+                } else if ($target.hasClass("link-text") || $target.closest("a").hasClass("arrow-link")) {
+                    link = $target.closest("a").focus().attr("href");
+                } else {
+                    link = $target.find("a").first().focus().attr("href");
+                }
+                w.location.href = link;
+            } else {
+                //If menu is not close all others and open
+                $(".ews-navbar-subsite .primary .dropdown-submenu.open").each(function () {
+                    $(this).removeClass("open");
+                });
+                open($target, "dropdown-submenu");
+            }
+        }
+    }
+    function handleLevel3AnchorTouchAndKey() {
+        $('.ews-navbar-subsite .dropdown.level-2 .level-3, .ews-navbar-subsite .dropdown.level-2 .level-3 a').on("touchstart keydown", function (e) {
+            const keyCode = e.keyCode || e.which,
+                eventType = e.type,
+                $target = $(e.target);
+            if (window.innerWidth >= mobileBreakpoint) {
+                switch (eventType) {
+                    case "touchstart":
+                        handleLevel3AnchorTouchAndKeyTouchstart($target, e);
+                        break;
+                    case "keydown":
+                        if (keyCode === 27 || (e.shiftKey && keyCode === 9 && $target.hasClass("dropdown-toggle"))) {
+                            close($target, "dropdown-submenu");
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
+    }
+    function handleLevel3FocusAndHover() {
+        $('.ews-navbar-subsite .dropdown.level-2 .level-3').on("focusin focusout mouseenter mouseleave", function (e) {
+            const eventType = e.type,
+                $target = $(e.target);
+            if (window.innerWidth >= mobileBreakpoint) {
+                switch (eventType) {
+                    case "focusin":
+                        open($target, "dropdown-submenu");
+                        desktopMenuHeight($(this));
+                        break;
+                    case "mouseenter":
+                        desktopMenuHeight($(this));
+                        $(".ews-navbar-subsite .primary .dropdown-submenu.open").each(function () {
+                            $(this).removeClass("open");
+                        });
+                        break;
+                    case "focusout":
+                    case "mouseleave":
+                        menuLeave($target, $(this));
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
+    }
+    function handleMobileSearchAndHamburger() {
+        //close hamburger if opening search
+        $('.ews-navbar-default .search-mobile .dropdown-toggle').on('show.bs.dropdown', function () {
+            if (w.innerWidth < mobileBreakpoint) {
+                closeMobileMenus($(".ews-navbar-subsite"));
+            }
+        });
+        $('.ews-navbar-default .hamburger-mobile > .dropdown-toggle').on('click', function () {
+            if (w.innerWidth < mobileBreakpoint) {
+                if (this.closest(".dropdown").classList.contains('open')) {
+                    closeMobileMenus($(".ews-navbar-subsite"));
+                } else {
+                    openMobileMenus($(".ews-navbar-subsite"));
+                }
+            }
+        });
+    }
+    function handleOffCanvas() {
+        //Mobile slide-in offcanvas toggle
+        $('.ews-navbar-subsite [data-toggle=offcanvas], .ews-navbar-subsite [data-toggle=offcanvas-subsite]').on("click", function (e) {
+            if (window.innerWidth < mobileBreakpoint) {
+                if ($(e.target).hasClass("offcanvas") || $(e.target).hasClass("offcanvas-link") || $(e.target).parent().parent().hasClass("offcanvas") || $(e.target).parent().hasClass("offcanvas-link")) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    //set height of secondary nav to be the same as primary
+                    mobileMenuHeight($(this));
+                    //slide secondary into place
+                    $(this).find('.row-offcanvas').first().toggleClass('active').animate({ [menuSlideDirection()]: "100%" }, 100);
+                }
+            }
+        });
+        $('.ews-navbar-subsite [data-toggle=offcanvas-hide]').on("click", function (e) {
+            if (window.innerWidth < mobileBreakpoint) {
+                e.stopPropagation();
+                e.preventDefault();
+                const $rowOffCanvas = $(this).closest('.row-offcanvas');
+                //slide secondary nav offscreen
+                $rowOffCanvas.animate({ [menuSlideDirection()]: "" }, 100, function () {
+                    //script is not waiting for css animation, so forcing wait
+                    setTimeout(function () {
+                        $rowOffCanvas.toggleClass('active');
+                    }, 250);
+                });
+                clearThisMobileMenuHeight($(this));
+                mobileMenuHeight($(this));
+            }
+        });
+        //Used for secondary close button
+        $('.ews-navbar-subsite .close-offcanvas').on("click", function (e) {
+            if (window.innerWidth < mobileBreakpoint) {
+                e.stopPropagation();
+                e.preventDefault();
+                closeMobileMenus($(".ews-navbar-subsite"));
+            }
+        });
+
+    }
+    $(d).ready(function () {
+        handleStickyNavScroll();
+        //Close all open subsite menus when touching off the menu
+        $(d.body).on("touchstart", function () {
+            if (w.innerWidth >= mobileBreakpoint) {
+                $(".ews-navbar-subsite .primary .dropdown.open").each(function () {
+                    $(this).removeClass("open");
+                });
+            }
+        });
+        handleDropdownToggle();
+        handleLevel3AnchorTouchAndKey();
+        handleLevel3FocusAndHover();
+        handleMobileSearchAndHamburger();
+        handleOffCanvas();
+        //clear level-2 menu height when returning to level-2 menu
+        $('.ews-navbar-subsite .main-menu-link-level-3').on("click", function () {
+            clearAllMobileMenuHeight($(".ews-navbar-subsite"));
+        });
+        //############################## End Mobile Behaviors ##############################
+
+        //After load is complete
+        $(window).bind('load', function () {
+            handleZoom();
+        });
+        $(window).resize(function () {
+            handleZoom();
+        });
+
+
+    });
+})(window, document, jQuery);;

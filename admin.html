@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chevron Employee Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color-dark-blue: #0b2d71;
+            --color-medium-blue: #1e5aa8;
+            --color-light-blue: #4a90e2;
+            --color-offwhite: #f8f9fa;
+            --color-white: #ffffff;
+            --color-gray-100: #f8f9fa;
+            --color-gray-200: #e9ecef;
+            --color-gray-300: #dee2e6;
+            --color-gray-400: #ced4da;
+            --color-gray-500: #adb5bd;
+            --color-gray-600: #6c757d;
+            --color-gray-700: #495057;
+            --color-gray-800: #343a40;
+            --color-gray-900: #212529;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--color-gray-800);
+            background-color: var(--color-offwhite);
+        }
+
+        .container-fluid {
+            width: 100%;
+            padding: 0;
+        }
+
+        .inner-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .width-1200 {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .nav-2023 {
+            background-color: var(--color-white);
+            border-bottom: 1px solid var(--color-gray-200);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .nav-2023-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+        }
+
+        .nav-2023-hallmark img {
+            height: 48px;
+            width: auto;
+        }
+
+        .nav-2023-list {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            margin: 0;
+        }
+
+        .nav-2023-link {
+            text-decoration: none;
+            color: var(--color-gray-700);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .nav-2023-link:hover {
+            color: var(--color-dark-blue);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--color-dark-blue) 0%, var(--color-medium-blue) 100%);
+            color: var(--color-white);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero-section p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Admin Dashboard */
+        .admin-dashboard {
+            padding: 3rem 0;
+        }
+
+        .admin-container {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .admin-form {
+            flex: 1;
+            min-width: 400px;
+            background-color: var(--color-white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .admin-list {
+            flex: 1;
+            min-width: 400px;
+            background-color: var(--color-white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            max-height: 800px;
+            overflow-y: auto;
+        }
+
+        .admin-list h2 {
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-gray-200);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--color-gray-700);
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--color-gray-300);
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--color-dark-blue);
+        }
+
+        .btn-primary {
+            background-color: var(--color-dark-blue);
+            color: var(--color-white);
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-medium-blue);
+        }
+
+        .btn-secondary {
+            background-color: var(--color-gray-500);
+            color: var(--color-white);
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: var(--color-white);
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .btn-edit {
+            background-color: var(--color-medium-blue);
+            color: var(--color-white);
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-right: 0.5rem;
+        }
+
+        .employee-list {
+            list-style: none;
+        }
+
+        .employee-item {
+            padding: 1rem;
+            border-bottom: 1px solid var(--color-gray-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .employee-info {
+            flex: 1;
+        }
+
+        .employee-name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .employee-position {
+            font-size: 0.9rem;
+            color: var(--color-gray-600);
+        }
+
+        .employee-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .message {
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--color-dark-blue);
+            color: var(--color-white);
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-logo img {
+            height: 60px;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo p {
+            opacity: 0.8;
+            margin-bottom: 1rem;
+            max-width: 300px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .admin-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <header class="nav-2023">
+        <nav class="nav-2023-nav width-1200">
+            <a class="nav-2023-hallmark" href="/">
+                <img src="https://www.chevron.com/-/media/shared-media/images/hallmark-2023.png" alt="Chevron" />
+            </a>
+            <ul class="nav-2023-list">
+                <li><a href="index.html" class="nav-2023-link">Back to Directory</a></li>
+                <li><a href="#" class="nav-2023-link">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="width-1200">
+            <h1>Employee Management</h1>
+            <p>Administrative dashboard for managing Chevron employee records</p>
+        </div>
+    </section>
+
+    <!-- Admin Dashboard -->
+    <section class="admin-dashboard">
+        <div class="width-1200">
+            <div id="adminMessage"></div>
+            
+            <div class="admin-container">
+                <div class="admin-form">
+                    <h2>Employee Form</h2>
+                    <form id="employeeForm">
+                        <input type="hidden" id="employeeId">
+                        
+                        <div class="form-group">
+                            <label for="employeeName">Full Name *</label>
+                            <input type="text" id="employeeName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="employeePosition">Position *</label>
+                            <input type="text" id="employeePosition" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="employeeDepartment">Department *</label>
+                            <select id="employeeDepartment" required>
+                                <option value="">Select Department</option>
+                                <option value="Exploration">Exploration</option>
+                                <option value="Production">Production</option>
+                                <option value="Refining">Refining</option>
+                                <option value="Marketing">Marketing</option>
+                                <option value="Technology">Technology</option>
+                                <option value="Finance">Finance</option>
+                                <option value="HR">Human Resources</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="employeeLocation">Location *</label>
+                            <select id="employeeLocation" required>
+                                <option value="">Select Location</option>
+                                <option value="Houston, TX">Houston, TX</option>
+                                <option value="San Ramon, CA">San Ramon, CA</option>
+                                <option value="London, UK">London, UK</option>
+                                <option value="Singapore">Singapore</option>
+                                <option value="Perth, Australia">Perth, Australia</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="employeeLevel">Level *</label>
+                            <select id="employeeLevel" required>
+                                <option value="">Select Level</option>
+                                <option value="Executive">Executive</option>
+                                <option value="Senior Management">Senior Management</option>
+                                <option value="Management">Management</option>
+                                <option value="Senior">Senior</option>
+                                <option value="Mid-Level">Mid-Level</option>
+                                <option value="Junior">Junior</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="employeeEmail">Email</label>
+                            <input type="email" id="employeeEmail">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="employeePhone">Phone</label>
+                            <input type="tel" id="employeePhone">
+                        </div>
+                        
+                        <button type="submit" class="btn-primary">Save Employee</button>
+                        <button type="button" class="btn-secondary" onclick="clearForm()">Clear Form</button>
+                    </form>
+                </div>
+                
+                <div class="admin-list">
+                    <h2>Employee Directory</h2>
+                    <ul id="employeeList" class="employee-list">
+                        <!-- Employee list will be populated by JavaScript -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="width-1200">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="https://www.chevron.com/-/media/shared-media/images/hallmark-2023.png" alt="Chevron" height="60">
+                    <p>Chevron has always put people at the center of the energy conversation.</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Chevron Corporation. All rights reserved. | Administrative Use Only</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dummy employee data
+        let employees = [
+            {
+                id: 1,
+                name: "Sarah Johnson",
+                position: "Chief Technology Officer",
+                department: "Technology",
+                location: "San Ramon, CA",
+                email: "sarah.johnson@chevron.com",
+                phone: "+1 (925) 842-1000",
+                level: "Executive"
+            },
+            {
+                id: 2,
+                name: "Michael Rodriguez",
+                position: "Exploration Manager",
+                department: "Exploration",
+                location: "Houston, TX",
+                email: "michael.rodriguez@chevron.com",
+                phone: "+1 (713) 372-4000",
+                level: "Senior Management"
+            },
+            {
+                id: 3,
+                name: "Emma Thompson",
+                position: "Sustainability Director",
+                department: "Environment",
+                location: "London, UK",
+                email: "emma.thompson@chevron.com",
+                phone: "+44 20 7499 5000",
+                level: "Senior Management"
+            }
+        ];
+
+        // DOM elements
+        const employeeForm = document.getElementById('employeeForm');
+        const employeeList = document.getElementById('employeeList');
+        const adminMessage = document.getElementById('adminMessage');
+
+        // Function to render employee list
+        function renderEmployeeList() {
+            employeeList.innerHTML = '';
+            
+            employees.forEach(employee => {
+                const li = document.createElement('li');
+                li.className = 'employee-item';
+                
+                li.innerHTML = `
+                    <div class="employee-info">
+                        <div class="employee-name">${employee.name}</div>
+                        <div class="employee-position">${employee.position} | ${employee.department}</div>
+                        <div class="employee-location">${employee.location}</div>
+                    </div>
+                    <div class="employee-actions">
+                        <button class="btn-edit" onclick="editEmployee(${employee.id})">
+                            <i class="fas fa-edit"></i> Edit
+                        </button>
+                        <button class="btn-danger" onclick="deleteEmployee(${employee.id})">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                    </div>
+                `;
+                
+                employeeList.appendChild(li);
+            });
+        }
+
+        // Function to show message
+        function showMessage(message, type = 'success') {
+            adminMessage.innerHTML = `<div class="message ${type}">${message}</div>`;
+            setTimeout(() => {
+                adminMessage.innerHTML = '';
+            }, 3000);
+        }
+
+        // Function to clear form
+        function clearForm() {
+            employeeForm.reset();
+            document.getElementById('employeeId').value = '';
+        }
+
+        // Function to edit employee
+        function editEmployee(id) {
+            const employee = employees.find(emp => emp.id === id);
+            if (employee) {
+                document.getElementById('employeeId').value = employee.id;
+                document.getElementById('employeeName').value = employee.name;
+                document.getElementById('employeePosition').value = employee.position;
+                document.getElementById('employeeDepartment').value = employee.department;
+                document.getElementById('employeeLocation').value = employee.location;
+                document.getElementById('employeeLevel').value = employee.level;
+                document.getElementById('employeeEmail').value = employee.email || '';
+                document.getElementById('employeePhone').value = employee.phone || '';
+                
+                showMessage(`Editing employee: ${employee.name}`);
+            }
+        }
+
+        // Function to delete employee
+        function deleteEmployee(id) {
+            if (confirm('Are you sure you want to delete this employee?')) {
+                employees = employees.filter(emp => emp.id !== id);
+                renderEmployeeList();
+                clearForm();
+                showMessage('Employee deleted successfully');
+            }
+        }
+
+        // Form submit handler
+        employeeForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const id = document.getElementById('employeeId').value;
+            const name = document.getElementById('employeeName').value;
+            const position = document.getElementById('employeePosition').value;
+            const department = document.getElementById('employeeDepartment').value;
+            const location = document.getElementById('employeeLocation').value;
+            const level = document.getElementById('employeeLevel').value;
+            const email = document.getElementById('employeeEmail').value;
+            const phone = document.getElementById('employeePhone').value;
+            
+            if (id) {
+                // Update existing employee
+                const index = employees.findIndex(emp => emp.id == id);
+                if (index !== -1) {
+                    employees[index] = {
+                        ...employees[index],
+                        name,
+                        position,
+                        department,
+                        location,
+                        level,
+                        email,
+                        phone
+                    };
+                    showMessage(`Employee updated: ${name}`);
+                }
+            } else {
+                // Add new employee
+                const newId = employees.length > 0 ? Math.max(...employees.map(e => e.id)) + 1 : 1;
+                employees.push({
+                    id: newId,
+                    name,
+                    position,
+                    department,
+                    location,
+                    level,
+                    email,
+                    phone
+                });
+                showMessage(`Employee added: ${name}`);
+            }
+            
+            renderEmployeeList();
+            clearForm();
+        });
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            renderEmployeeList();
+        });
+    </script>
+</body>
+</html>
