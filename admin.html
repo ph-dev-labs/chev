@@ -165,16 +165,24 @@
         }
 
         .form-group input,
-        .form-group select {
+        .form-group select,
+        .form-group textarea {
             width: 100%;
             padding: 0.75rem;
             border: 2px solid var(--color-gray-300);
             border-radius: 8px;
             font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            min-height: 80px;
+            resize: vertical;
         }
 
         .form-group input:focus,
-        .form-group select:focus {
+        .form-group select:focus,
+        .form-group textarea:focus {
             outline: none;
             border-color: var(--color-dark-blue);
         }
@@ -234,11 +242,19 @@
         }
 
         .employee-item {
-            padding: 1rem;
+            padding: 1.5rem;
             border-bottom: 1px solid var(--color-gray-200);
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .employee-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
         }
 
         .employee-info {
@@ -248,16 +264,33 @@
         .employee-name {
             font-weight: 600;
             margin-bottom: 0.25rem;
+            font-size: 1.1rem;
         }
 
         .employee-position {
+            font-size: 0.95rem;
+            color: var(--color-gray-600);
+            margin-bottom: 0.25rem;
+        }
+
+        .employee-details {
+            font-size: 0.85rem;
+            color: var(--color-gray-500);
+            margin-bottom: 0.5rem;
+        }
+
+        .employee-bio {
             font-size: 0.9rem;
             color: var(--color-gray-600);
+            line-height: 1.4;
+            margin-top: 0.5rem;
+            max-width: 500px;
         }
 
         .employee-actions {
             display: flex;
             gap: 0.5rem;
+            flex-shrink: 0;
         }
 
         .message {
@@ -323,6 +356,16 @@
             .admin-container {
                 flex-direction: column;
             }
+            
+            .employee-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .employee-actions {
+                justify-content: center;
+                margin-top: 1rem;
+            }
         }
     </style>
 </head>
@@ -381,6 +424,7 @@
                                 <option value="Technology">Technology</option>
                                 <option value="Finance">Finance</option>
                                 <option value="HR">Human Resources</option>
+                                <option value="Environment">Environment</option>
                             </select>
                         </div>
                         
@@ -410,6 +454,11 @@
                         </div>
                         
                         <div class="form-group">
+                            <label for="employeeYears">Years of Experience</label>
+                            <input type="number" id="employeeYears" min="0" max="50">
+                        </div>
+                        
+                        <div class="form-group">
                             <label for="employeeEmail">Email</label>
                             <input type="email" id="employeeEmail">
                         </div>
@@ -417,6 +466,16 @@
                         <div class="form-group">
                             <label for="employeePhone">Phone</label>
                             <input type="tel" id="employeePhone">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="employeeAvatar">Avatar URL</label>
+                            <input type="url" id="employeeAvatar" placeholder="https://example.com/image.jpg">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="employeeBio">Biography</label>
+                            <textarea id="employeeBio" placeholder="Brief professional biography..."></textarea>
                         </div>
                         
                         <button type="submit" class="btn-primary">Save Employee</button>
@@ -450,7 +509,7 @@
     </footer>
 
     <script>
-        // Dummy employee data
+        // Employee data using the new expanded structure
         let employees = [
             {
                 id: 1,
@@ -458,9 +517,12 @@
                 position: "Chief Technology Officer",
                 department: "Technology",
                 location: "San Ramon, CA",
+                avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b647?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                level: "Executive",
+                years: 15,
                 email: "sarah.johnson@chevron.com",
                 phone: "+1 (925) 842-1000",
-                level: "Executive"
+                bio: "Seasoned technology executive with over 15 years of experience driving digital transformation in the energy sector. Expert in emerging technologies, cybersecurity, and data analytics. Leads global technology initiatives that enhance operational efficiency and support Chevron's commitment to lower carbon energy solutions."
             },
             {
                 id: 2,
@@ -468,9 +530,12 @@
                 position: "Exploration Manager",
                 department: "Exploration",
                 location: "Houston, TX",
+                avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                level: "Senior Management",
+                years: 12,
                 email: "michael.rodriguez@chevron.com",
                 phone: "+1 (713) 372-4000",
-                level: "Senior Management"
+                bio: "Experienced exploration professional specializing in deepwater and unconventional resource development. Leads multidisciplinary teams in identifying and evaluating new exploration opportunities. Strong background in geological analysis, seismic interpretation, and project economics with a focus on sustainable development practices."
             },
             {
                 id: 3,
@@ -478,9 +543,38 @@
                 position: "Sustainability Director",
                 department: "Environment",
                 location: "London, UK",
+                avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                level: "Senior Management",
+                years: 14,
                 email: "emma.thompson@chevron.com",
                 phone: "+44 20 7499 5000",
-                level: "Senior Management"
+                bio: "Environmental leader with extensive experience in sustainability strategy and climate policy. Drives Chevron's environmental initiatives and carbon reduction programs. Expert in renewable energy integration, environmental compliance, and stakeholder engagement. Passionate about advancing the energy transition while maintaining operational excellence."
+            },
+            {
+                id: 4,
+                name: "David Chen",
+                position: "Senior Financial Analyst",
+                department: "Finance",
+                location: "Singapore",
+                avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                level: "Senior",
+                years: 8,
+                email: "david.chen@chevron.com",
+                phone: "+65 6789 8000",
+                bio: "Financial analyst with deep expertise in energy markets and investment analysis. Specializes in project economics, risk assessment, and financial modeling for upstream and downstream operations. Strong analytical skills with experience in mergers and acquisitions, capital allocation, and strategic planning across Asian markets."
+            },
+            {
+                id: 5,
+                name: "Lisa Martinez",
+                position: "Global HR Business Partner",
+                department: "HR",
+                location: "Houston, TX",
+                avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                level: "Management",
+                years: 10,
+                email: "lisa.martinez@chevron.com",
+                phone: "+1 (713) 372-2000",
+                bio: "Partners with senior leadership to develop and execute human capital strategies that drive business results. Expert in talent acquisition, leadership development, and organizational change management. Champions diversity, equity, and inclusion initiatives while fostering a culture of innovation and collaboration. Passionate about developing high-performing teams and creating exceptional employee experiences."
             }
         ];
 
@@ -498,10 +592,15 @@
                 li.className = 'employee-item';
                 
                 li.innerHTML = `
+                    <img src="${employee.avatar || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'}" 
+                         alt="${employee.name}" class="employee-avatar" onerror="this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
                     <div class="employee-info">
                         <div class="employee-name">${employee.name}</div>
-                        <div class="employee-position">${employee.position} | ${employee.department}</div>
-                        <div class="employee-location">${employee.location}</div>
+                        <div class="employee-position">${employee.position}</div>
+                        <div class="employee-details">
+                            ${employee.department} | ${employee.location} | ${employee.level} | ${employee.years || 0} years
+                        </div>
+                        ${employee.bio ? `<div class="employee-bio">${employee.bio}</div>` : ''}
                     </div>
                     <div class="employee-actions">
                         <button class="btn-edit" onclick="editEmployee(${employee.id})">
@@ -541,8 +640,11 @@
                 document.getElementById('employeeDepartment').value = employee.department;
                 document.getElementById('employeeLocation').value = employee.location;
                 document.getElementById('employeeLevel').value = employee.level;
+                document.getElementById('employeeYears').value = employee.years || '';
                 document.getElementById('employeeEmail').value = employee.email || '';
                 document.getElementById('employeePhone').value = employee.phone || '';
+                document.getElementById('employeeAvatar').value = employee.avatar || '';
+                document.getElementById('employeeBio').value = employee.bio || '';
                 
                 showMessage(`Editing employee: ${employee.name}`);
             }
@@ -568,8 +670,11 @@
             const department = document.getElementById('employeeDepartment').value;
             const location = document.getElementById('employeeLocation').value;
             const level = document.getElementById('employeeLevel').value;
+            const years = parseInt(document.getElementById('employeeYears').value) || 0;
             const email = document.getElementById('employeeEmail').value;
             const phone = document.getElementById('employeePhone').value;
+            const avatar = document.getElementById('employeeAvatar').value;
+            const bio = document.getElementById('employeeBio').value;
             
             if (id) {
                 // Update existing employee
@@ -582,8 +687,11 @@
                         department,
                         location,
                         level,
+                        years,
                         email,
-                        phone
+                        phone,
+                        avatar,
+                        bio
                     };
                     showMessage(`Employee updated: ${name}`);
                 }
@@ -597,8 +705,11 @@
                     department,
                     location,
                     level,
+                    years,
                     email,
-                    phone
+                    phone,
+                    avatar,
+                    bio
                 });
                 showMessage(`Employee added: ${name}`);
             }
