@@ -88,6 +88,348 @@
         background-color: var(--color-offwhite);
       }
 
+      /* Image Slider Styles */
+      .slider-section {
+        margin-top: 4rem;
+        padding: 4rem 0;
+        margin-bottom: 1rem;
+      }
+
+      .slider-container {
+        position: relative;
+        max-width: 100%;
+        margin: 0 auto;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        background: var(--color-white);
+      }
+
+      .slider-wrapper {
+        position: relative;
+        width: 100%;
+        height: 500px;
+        overflow: hidden;
+      }
+
+      .slider-track {
+        display: flex;
+        width: 500%;
+        height: 100%;
+        transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .slide {
+        position: relative;
+        width: 20%;
+        height: 100%;
+        flex-shrink: 0;
+      }
+
+      .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .slide-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(
+          to top,
+          rgba(11, 45, 113, 0.9) 0%,
+          rgba(11, 45, 113, 0.6) 50%,
+          transparent 100%
+        );
+        color: var(--color-white);
+        padding: 3rem 2rem 2rem;
+      }
+
+      .slide-content {
+        max-width: 600px;
+      }
+
+      .slide-title {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+        text-transform: lowercase;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        line-height: 1.2;
+      }
+
+      .slide-description {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        opacity: 0.95;
+        font-weight: 400;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Slider Navigation Dots */
+      .slider-dots {
+        position: absolute;
+        bottom: 2rem;
+        right: 2rem;
+        display: flex;
+        gap: 0.75rem;
+        z-index: 10;
+      }
+
+      .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        border: 2px solid rgba(255, 255, 255, 0.6);
+        background: transparent;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        padding: 0;
+      }
+
+      .dot:hover,
+      .dot.active {
+        background: var(--color-white);
+        border-color: var(--color-white);
+        transform: scale(1.2);
+      }
+
+      /* Slider Controls */
+      .slider-control {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.2);
+        border: 2px solid rgba(255, 255, 255, 0.4);
+        color: var(--color-white);
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+        transition: all 0.3s ease;
+        z-index: 10;
+        backdrop-filter: blur(10px);
+      }
+
+      .slider-control:hover {
+        background: rgba(255, 255, 255, 0.3);
+        border-color: rgba(255, 255, 255, 0.6);
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      .slider-control.prev {
+        left: 2rem;
+      }
+
+      .slider-control.next {
+        right: 2rem;
+      }
+
+      /* Progressive Enhancement Animations */
+      @keyframes slideInFromRight {
+        from {
+          opacity: 0;
+          transform: translateX(100px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes slideInFromLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-100px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .slide.active .slide-title {
+        animation: slideInFromLeft 0.8s ease-out 0.3s both;
+      }
+
+      .slide.active .slide-description {
+        animation: slideInFromLeft 0.8s ease-out 0.5s both;
+      }
+
+      /* Loading Animation */
+      .slider-container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        animation: shimmer 3s infinite;
+        z-index: 1;
+      }
+
+      @keyframes shimmer {
+        0% {
+          left: -100%;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 992px) {
+        .slider-wrapper {
+          height: 400px;
+        }
+
+        .slide-title {
+          font-size: 1.75rem;
+        }
+
+        .slide-description {
+          font-size: 1rem;
+        }
+
+        .slider-control {
+          width: 50px;
+          height: 50px;
+          font-size: 1rem;
+        }
+
+        .slider-control.prev {
+          left: 1rem;
+        }
+
+        .slider-control.next {
+          right: 1rem;
+        }
+
+        .slider-dots {
+          bottom: 1.5rem;
+          right: 1.5rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .slider-section {
+          padding: 2rem 0;
+        }
+
+        .slider-wrapper {
+          height: 300px;
+        }
+
+        .slide-overlay {
+          padding: 2rem 1.5rem 1.5rem;
+        }
+
+        .slide-title {
+          font-size: 1.5rem;
+        }
+
+        .slide-description {
+          font-size: 0.9rem;
+        }
+
+        .slider-control {
+          width: 40px;
+          height: 40px;
+          font-size: 0.875rem;
+        }
+
+        .dot {
+          width: 10px;
+          height: 10px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .slider-wrapper {
+          height: 250px;
+        }
+
+        .slide-overlay {
+          padding: 1.5rem 1rem 1rem;
+        }
+
+        .slide-title {
+          font-size: 1.25rem;
+        }
+
+        .slide-description {
+          font-size: 0.85rem;
+        }
+      }
+
+      /* Accessibility Improvements */
+      @media (prefers-reduced-motion: reduce) {
+        .slider-track {
+          transition: none;
+        }
+
+        .slide-title,
+        .slide-description {
+          animation: none;
+        }
+
+        .slider-container::before {
+          animation: none;
+        }
+      }
+
+      /* Focus States for Accessibility */
+      .slider-control:focus,
+      .dot:focus {
+        outline: 3px solid var(--color-light-blue);
+        outline-offset: 2px;
+      }
+
+      /* High Contrast Mode Support */
+      @media (prefers-contrast: high) {
+        .slide-overlay {
+          background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.9) 0%,
+            rgba(0, 0, 0, 0.6) 50%,
+            transparent 100%
+          );
+        }
+
+        .slider-control {
+          background: rgba(0, 0, 0, 0.8);
+          border-color: var(--color-white);
+        }
+
+        .dot {
+          border-color: var(--color-white);
+        }
+      }
+
       .container-fluid {
         width: 100%;
         padding: 0;
@@ -285,7 +627,7 @@
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        background-image: url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80");
+        background-image: url("https://images.unsplash.com/photo-1576284876715-ebc5f2e46776?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
       }
 
       .gradient-container {
@@ -908,6 +1250,7 @@
 
         <!-- Search Section -->
         <!-- <section class="search-section">
+            
           <div class="search-container width-1200">
             <div class="search-box">
               <i class="fas fa-search"></i>
@@ -919,6 +1262,140 @@
             </div>
           </div>
         </section> -->
+
+        <section
+          class="slider-section container-fluid background-color-offwhite"
+        >
+          <div class="width-1200">
+            <div class="slider-container">
+              <div class="slider-wrapper">
+                <div class="slider-track" id="sliderTrack">
+                  <div class="slide active">
+                    <img
+                      src="https://images.unsplash.com/photo-1726731782158-fcf6822b6ca4?q=80&w=2128&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      alt="Offshore Oil Rig at Sunset"
+                      class="slide__image"
+                      loading="lazy"
+                    />
+                    <div class="slide__overlay">
+                      <h3 class="slide__title">offshore excellence</h3>
+                      <p class="slide__description">
+                        Leading deepwater drilling operations with cutting-edge
+                        technology and uncompromising safety standards
+                      </p>
+                    </div>
+                  </div>
+                  <div class="slide">
+                    <img
+                      src="https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
+                      alt="Oil Rig Workers"
+                      class="slide__image"
+                      loading="lazy"
+                    />
+                    <div class="slide__overlay">
+                      <h3 class="slide__title">skilled workforce</h3>
+                      <p class="slide__description">
+                        Our expert teams operate safely in challenging offshore
+                        environments around the world
+                      </p>
+                    </div>
+                  </div>
+                  <div class="slide">
+                    <img
+                      src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
+                      alt="Oil Rig Platform Structure"
+                      class="slide__image"
+                      loading="lazy"
+                    />
+                    <div class="slide__overlay">
+                      <h3 class="slide__title">engineering mastery</h3>
+                      <p class="slide__description">
+                        Advanced platform design and construction for optimal
+                        resource extraction in extreme conditions
+                      </p>
+                    </div>
+                  </div>
+                  <div class="slide">
+                    <img
+                    https://plus.unsplash.com/premium_photo-1664910360093-bc19787042ca?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+                      src="https://plus.unsplash.com/premium_photo-1664300121717-903f7c18decc?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      alt="Offshore Drilling Technology"
+                      class="slide__image"
+                      loading="lazy"
+                    />
+                    <div class="slide__overlay">
+                      <h3 class="slide__title">technological innovation</h3>
+                      <p class="slide__description">
+                        Pioneering subsea technologies and automation systems
+                        for efficient energy production
+                      </p>
+                    </div>
+                  </div>
+                  <div class="slide">
+                    <img
+                      src="https://images.unsplash.com/photo-1602056820935-316884c035f8?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      alt="Global Maritime Operations"
+                      class="slide__image"
+                      loading="lazy"
+                    />
+                    <div class="slide__overlay">
+                      <h3 class="slide__title">global operations</h3>
+                      <p class="slide__description">
+                        Comprehensive offshore energy solutions spanning across
+                        international waters and marine environments
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slider Navigation Dots -->
+              <div class="slider-dots">
+                <button
+                  class="dot active"
+                  onclick="goToSlide(0)"
+                  aria-label="Go to slide 1"
+                ></button>
+                <button
+                  class="dot"
+                  onclick="goToSlide(1)"
+                  aria-label="Go to slide 2"
+                ></button>
+                <button
+                  class="dot"
+                  onclick="goToSlide(2)"
+                  aria-label="Go to slide 3"
+                ></button>
+                <button
+                  class="dot"
+                  onclick="goToSlide(3)"
+                  aria-label="Go to slide 4"
+                ></button>
+                <button
+                  class="dot"
+                  onclick="goToSlide(4)"
+                  aria-label="Go to slide 5"
+                ></button>
+              </div>
+
+              <!-- Slider Controls -->
+              <button
+                class="slider-control prev"
+                onclick="previousSlide()"
+                aria-label="Previous slide"
+              >
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <button
+                class="slider-control next"
+                onclick="nextSlide()"
+                aria-label="Next slide"
+              >
+                <i class="fas fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+        </section>
 
         <!-- Employees Section -->
         <section
@@ -996,19 +1473,25 @@
                 </button>
                 <ul class="accordion-collapse" id="collapse-0">
                   <li class="accordion-list-item type-body text-reduced">
-                    <a href="https://www.chevron.com/who-we-are/contact" class="cta-link accordion-link"
+                    <a
+                      href="https://www.chevron.com/who-we-are/contact"
+                      class="cta-link accordion-link"
                       ><span class="cta-underline">contact us</span></a
                     >
                   </li>
                   <li class="accordion-list-item type-body text-reduced">
-                    <a href="https://www.chevron.com/" class="cta-link accordion-link"
+                    <a
+                      href="https://www.chevron.com/"
+                      class="cta-link accordion-link"
                       ><span class="cta-underline"
                         >find a service station</span
                       ></a
                     >
                   </li>
                   <li class="accordion-list-item type-body text-reduced">
-                    <a href="https://www.chevron.com/" class="cta-link accordion-link"
+                    <a
+                      href="https://www.chevron.com/"
+                      class="cta-link accordion-link"
                       ><span class="cta-underline"
                         >chevron texaco rewards</span
                       ></a
@@ -1322,6 +1805,231 @@
             observer.observe(card);
           });
         }, 100);
+      });
+    </script>
+
+    <script>
+      // Enhanced Image Slider with Auto-play and Professional Features
+      class ChevronSlider {
+        constructor() {
+          this.currentSlide = 0;
+          this.totalSlides = 5;
+          this.autoSlideInterval = null;
+          this.autoSlideDelay = 5000; // 5 seconds
+          this.isTransitioning = false;
+          this.isPaused = false;
+
+          this.sliderTrack = document.getElementById("sliderTrack");
+          this.dots = document.querySelectorAll(".dot");
+          this.prevButton = document.querySelector(".slider-control.prev");
+          this.nextButton = document.querySelector(".slider-control.next");
+
+          this.init();
+        }
+
+        init() {
+          // Start auto-slide
+          this.startAutoSlide();
+
+          // Add event listeners
+          this.addEventListeners();
+
+          // Initialize first slide
+          this.updateSlider();
+
+          // Pause on hover
+          const sliderContainer = document.querySelector(".slider-container");
+          sliderContainer.addEventListener("mouseenter", () =>
+            this.pauseAutoSlide()
+          );
+          sliderContainer.addEventListener("mouseleave", () =>
+            this.resumeAutoSlide()
+          );
+
+          // Pause on focus for accessibility
+          document
+            .querySelectorAll(".slider-control, .dot")
+            .forEach((element) => {
+              element.addEventListener("focus", () => this.pauseAutoSlide());
+              element.addEventListener("blur", () => this.resumeAutoSlide());
+            });
+
+          // Pause when page is not visible
+          document.addEventListener("visibilitychange", () => {
+            if (document.hidden) {
+              this.pauseAutoSlide();
+            } else {
+              this.resumeAutoSlide();
+            }
+          });
+        }
+
+        addEventListeners() {
+          // Touch/swipe support
+          let startX = 0;
+          let endX = 0;
+
+          this.sliderTrack.addEventListener("touchstart", (e) => {
+            startX = e.touches[0].clientX;
+            this.pauseAutoSlide();
+          });
+
+          this.sliderTrack.addEventListener("touchmove", (e) => {
+            endX = e.touches[0].clientX;
+          });
+
+          this.sliderTrack.addEventListener("touchend", () => {
+            const threshold = 50;
+            const difference = startX - endX;
+
+            if (Math.abs(difference) > threshold) {
+              if (difference > 0) {
+                this.nextSlide();
+              } else {
+                this.previousSlide();
+              }
+            }
+
+            this.resumeAutoSlide();
+          });
+
+          // Keyboard navigation
+          document.addEventListener("keydown", (e) => {
+            if (document.activeElement.closest(".slider-container")) {
+              switch (e.key) {
+                case "ArrowLeft":
+                  e.preventDefault();
+                  this.previousSlide();
+                  break;
+                case "ArrowRight":
+                  e.preventDefault();
+                  this.nextSlide();
+                  break;
+                case " ":
+                case "Enter":
+                  e.preventDefault();
+                  this.isPaused
+                    ? this.resumeAutoSlide()
+                    : this.pauseAutoSlide();
+                  break;
+              }
+            }
+          });
+        }
+
+        startAutoSlide() {
+          this.autoSlideInterval = setInterval(() => {
+            if (!this.isPaused && !this.isTransitioning) {
+              this.nextSlide();
+            }
+          }, this.autoSlideDelay);
+        }
+
+        stopAutoSlide() {
+          if (this.autoSlideInterval) {
+            clearInterval(this.autoSlideInterval);
+            this.autoSlideInterval = null;
+          }
+        }
+
+        pauseAutoSlide() {
+          this.isPaused = true;
+        }
+
+        resumeAutoSlide() {
+          this.isPaused = false;
+          if (!this.autoSlideInterval) {
+            this.startAutoSlide();
+          }
+        }
+
+        goToSlide(index) {
+          if (this.isTransitioning || index === this.currentSlide) return;
+
+          this.currentSlide = index;
+          this.updateSlider();
+          this.resetAutoSlide();
+        }
+
+        nextSlide() {
+          if (this.isTransitioning) return;
+
+          this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+          this.updateSlider();
+        }
+
+        previousSlide() {
+          if (this.isTransitioning) return;
+
+          this.currentSlide =
+            (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+          this.updateSlider();
+        }
+
+        updateSlider() {
+          if (!this.sliderTrack) return;
+
+          this.isTransitioning = true;
+
+          // Update slider position
+          const translateX = -this.currentSlide * 20; // 20% per slide
+          this.sliderTrack.style.transform = `translateX(${translateX}%)`;
+
+          // Update dots
+          this.dots.forEach((dot, index) => {
+            dot.classList.toggle("active", index === this.currentSlide);
+          });
+
+          // Update slides active state for animations
+          const slides = document.querySelectorAll(".slide");
+          slides.forEach((slide, index) => {
+            slide.classList.toggle("active", index === this.currentSlide);
+          });
+
+          // Reset transition flag after animation completes
+          setTimeout(() => {
+            this.isTransitioning = false;
+          }, 800);
+        }
+
+        resetAutoSlide() {
+          this.stopAutoSlide();
+          this.startAutoSlide();
+        }
+      }
+
+      // Global functions for button onclick events
+      function goToSlide(index) {
+        if (window.chevronSlider) {
+          window.chevronSlider.goToSlide(index);
+        }
+      }
+
+      function nextSlide() {
+        if (window.chevronSlider) {
+          window.chevronSlider.nextSlide();
+        }
+      }
+
+      function previousSlide() {
+        if (window.chevronSlider) {
+          window.chevronSlider.previousSlide();
+        }
+      }
+
+      // Initialize slider when DOM is loaded
+      document.addEventListener("DOMContentLoaded", () => {
+        // Small delay to ensure all elements are rendered
+        setTimeout(() => {
+          window.chevronSlider = new ChevronSlider();
+        }, 100);
+      });
+
+      // Cleanup on page unload
+      window.addEventListener("beforeunload", () => {
+        if (window.chevronSlider) {
+          window.chevronSlider.stopAutoSlide();
+        }
       });
     </script>
   </body>
