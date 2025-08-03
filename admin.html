@@ -212,6 +212,7 @@
             font-weight: 600;
             cursor: pointer;
             font-size: 1rem;
+            margin-left: 1rem;
         }
 
         .btn-danger {
@@ -261,16 +262,10 @@
             flex: 1;
         }
 
-        .employee-name {
+        .employee-position {
             font-weight: 600;
             margin-bottom: 0.25rem;
             font-size: 1.1rem;
-        }
-
-        .employee-position {
-            font-size: 0.95rem;
-            color: var(--color-gray-600);
-            margin-bottom: 0.25rem;
         }
 
         .employee-details {
@@ -310,6 +305,26 @@
             background-color: #f8d7da;
             color: #721c24;
             border: 1px solid #f5c6cb;
+        }
+
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+        }
+
+        .loading-spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: var(--color-dark-blue);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
 
         /* Footer */
@@ -366,6 +381,11 @@
                 justify-content: center;
                 margin-top: 1rem;
             }
+
+            .btn-secondary {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
         }
     </style>
 </head>
@@ -402,11 +422,6 @@
                     <h2>Employee Form</h2>
                     <form id="employeeForm">
                         <input type="hidden" id="employeeId">
-                        
-                        <div class="form-group">
-                            <label for="employeeName">Full Name *</label>
-                            <input type="text" id="employeeName" required>
-                        </div>
                         
                         <div class="form-group">
                             <label for="employeePosition">Position *</label>
@@ -459,16 +474,6 @@
                         </div>
                         
                         <div class="form-group">
-                            <label for="employeeEmail">Email</label>
-                            <input type="email" id="employeeEmail">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="employeePhone">Phone</label>
-                            <input type="tel" id="employeePhone">
-                        </div>
-                        
-                        <div class="form-group">
                             <label for="employeeAvatar">Avatar URL</label>
                             <input type="url" id="employeeAvatar" placeholder="https://example.com/image.jpg">
                         </div>
@@ -485,9 +490,12 @@
                 
                 <div class="admin-list">
                     <h2>Employee Directory</h2>
-                    <ul id="employeeList" class="employee-list">
+                    <div id="employeeList" class="employee-list">
                         <!-- Employee list will be populated by JavaScript -->
-                    </ul>
+                        <div class="loading">
+                            <div class="loading-spinner"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -509,82 +517,170 @@
     </footer>
 
     <script>
-        // Employee data using the new expanded structure
-        let employees = [
-            {
-                id: 1,
-                name: "Sarah Johnson",
-                position: "Chief Technology Officer",
-                department: "Technology",
-                location: "San Ramon, CA",
-                avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b647?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-                level: "Executive",
-                years: 15,
-                email: "sarah.johnson@chevron.com",
-                phone: "+1 (925) 842-1000",
-                bio: "Seasoned technology executive with over 15 years of experience driving digital transformation in the energy sector. Expert in emerging technologies, cybersecurity, and data analytics. Leads global technology initiatives that enhance operational efficiency and support Chevron's commitment to lower carbon energy solutions."
-            },
-            {
-                id: 2,
-                name: "Michael Rodriguez",
-                position: "Exploration Manager",
-                department: "Exploration",
-                location: "Houston, TX",
-                avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-                level: "Senior Management",
-                years: 12,
-                email: "michael.rodriguez@chevron.com",
-                phone: "+1 (713) 372-4000",
-                bio: "Experienced exploration professional specializing in deepwater and unconventional resource development. Leads multidisciplinary teams in identifying and evaluating new exploration opportunities. Strong background in geological analysis, seismic interpretation, and project economics with a focus on sustainable development practices."
-            },
-            {
-                id: 3,
-                name: "Emma Thompson",
-                position: "Sustainability Director",
-                department: "Environment",
-                location: "London, UK",
-                avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-                level: "Senior Management",
-                years: 14,
-                email: "emma.thompson@chevron.com",
-                phone: "+44 20 7499 5000",
-                bio: "Environmental leader with extensive experience in sustainability strategy and climate policy. Drives Chevron's environmental initiatives and carbon reduction programs. Expert in renewable energy integration, environmental compliance, and stakeholder engagement. Passionate about advancing the energy transition while maintaining operational excellence."
-            },
-            {
-                id: 4,
-                name: "David Chen",
-                position: "Senior Financial Analyst",
-                department: "Finance",
-                location: "Singapore",
-                avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-                level: "Senior",
-                years: 8,
-                email: "david.chen@chevron.com",
-                phone: "+65 6789 8000",
-                bio: "Financial analyst with deep expertise in energy markets and investment analysis. Specializes in project economics, risk assessment, and financial modeling for upstream and downstream operations. Strong analytical skills with experience in mergers and acquisitions, capital allocation, and strategic planning across Asian markets."
-            },
-            {
-                id: 5,
-                name: "Lisa Martinez",
-                position: "Global HR Business Partner",
-                department: "HR",
-                location: "Houston, TX",
-                avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-                level: "Management",
-                years: 10,
-                email: "lisa.martinez@chevron.com",
-                phone: "+1 (713) 372-2000",
-                bio: "Partners with senior leadership to develop and execute human capital strategies that drive business results. Expert in talent acquisition, leadership development, and organizational change management. Champions diversity, equity, and inclusion initiatives while fostering a culture of innovation and collaboration. Passionate about developing high-performing teams and creating exceptional employee experiences."
-            }
-        ];
-
+        // API base URL
+        const API_BASE_URL = 'https://seok-young.online/mezie-api';
+        
         // DOM elements
         const employeeForm = document.getElementById('employeeForm');
         const employeeList = document.getElementById('employeeList');
         const adminMessage = document.getElementById('adminMessage');
 
+        // Function to show message
+        function showMessage(message, type = 'success') {
+            adminMessage.innerHTML = `<div class="message ${type}">${message}</div>`;
+            setTimeout(() => {
+                adminMessage.innerHTML = '';
+            }, 5000);
+        }
+
+        // Function to show loading state
+        function showLoading() {
+            employeeList.innerHTML = `
+                <div class="loading">
+                    <div class="loading-spinner"></div>
+                </div>
+            `;
+        }
+
+        // Function to clear form
+        function clearForm() {
+            employeeForm.reset();
+            document.getElementById('employeeId').value = '';
+            showMessage('Form cleared successfully');
+        }
+
+        // Function to fetch all employees
+        async function fetchEmployees() {
+            showLoading();
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/employee`);
+                const data = await response.json();
+                
+                if (data.status === 200 && data.employees) {
+                    renderEmployeeList(data.employees);
+                } else {
+                    throw new Error('Failed to fetch employees');
+                }
+            } catch (error) {
+                console.error('Error fetching employees:', error);
+                showMessage('Failed to load employees. Please try again later.', 'error');
+                employeeList.innerHTML = `
+                    <div class="message error">
+                        Failed to load employees. Please try again later.
+                    </div>
+                `;
+            }
+        }
+
+        // Function to get single employee
+        async function getEmployee(id) {
+            try {
+                const response = await fetch(`${API_BASE_URL}/getEmployee?id=${id}`);
+                const data = await response.json();
+                
+                if (data.status === 200 && data.data && data.data.length > 0) {
+                    return data.data[0];
+                } else {
+                    throw new Error('Employee not found');
+                }
+            } catch (error) {
+                console.error('Error fetching employee:', error);
+                showMessage('Failed to fetch employee details', 'error');
+                return null;
+            }
+        }
+
+        // Function to create employee
+        async function createEmployee(employeeData) {
+            try {
+                const response = await fetch(`${API_BASE_URL}/register`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(employeeData)
+                });
+                
+                const data = await response.json();
+                
+                if (data.status === 200) {
+                    showMessage('Employee created successfully!');
+                    fetchEmployees();
+                    return true;
+                } else {
+                    throw new Error(data.message || 'Failed to create employee');
+                }
+            } catch (error) {
+                console.error('Error creating employee:', error);
+                showMessage(`Failed to create employee: ${error.message}`, 'error');
+                return false;
+            }
+        }
+
+        // Function to update employee
+        async function updateEmployee(id, employeeData) {
+            try {
+                const response = await fetch(`${API_BASE_URL}/updateEmployee?id=${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(employeeData)
+                });
+                
+                const data = await response.json();
+                
+                if (data.status === 200) {
+                    showMessage('Employee updated successfully!');
+                    fetchEmployees();
+                    return true;
+                } else {
+                    throw new Error(data.message || 'Failed to update employee');
+                }
+            } catch (error) {
+                console.error('Error updating employee:', error);
+                showMessage(`Failed to update employee: ${error.message}`, 'error');
+                return false;
+            }
+        }
+
+        // Function to delete employee
+        async function deleteEmployee(id) {
+            if (!confirm('Are you sure you want to delete this employee?')) return false;
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/deleteEmployee?id=${id}`, {
+                    method: 'DELETE'
+                });
+                
+                const data = await response.json();
+                
+                if (data.status === 'success') {
+                    showMessage('Employee deleted successfully!');
+                    fetchEmployees();
+                    return true;
+                } else {
+                    throw new Error(data.message || 'Failed to delete employee');
+                }
+            } catch (error) {
+                console.error('Error deleting employee:', error);
+                showMessage(`Failed to delete employee: ${error.message}`, 'error');
+                return false;
+            }
+        }
+
         // Function to render employee list
-        function renderEmployeeList() {
+        function renderEmployeeList(employees) {
+            if (!employees || employees.length === 0) {
+                employeeList.innerHTML = `
+                    <div class="message">
+                        No employees found. Add a new employee to get started.
+                    </div>
+                `;
+                return;
+            }
+            
             employeeList.innerHTML = '';
             
             employees.forEach(employee => {
@@ -593,9 +689,8 @@
                 
                 li.innerHTML = `
                     <img src="${employee.avatar || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'}" 
-                         alt="${employee.name}" class="employee-avatar" onerror="this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
+                         alt="${employee.position}" class="employee-avatar" onerror="this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
                     <div class="employee-info">
-                        <div class="employee-name">${employee.name}</div>
                         <div class="employee-position">${employee.position}</div>
                         <div class="employee-details">
                             ${employee.department} | ${employee.location} | ${employee.level} | ${employee.years || 0} years
@@ -616,111 +711,63 @@
             });
         }
 
-        // Function to show message
-        function showMessage(message, type = 'success') {
-            adminMessage.innerHTML = `<div class="message ${type}">${message}</div>`;
-            setTimeout(() => {
-                adminMessage.innerHTML = '';
-            }, 3000);
-        }
-
-        // Function to clear form
-        function clearForm() {
-            employeeForm.reset();
-            document.getElementById('employeeId').value = '';
-        }
-
         // Function to edit employee
-        function editEmployee(id) {
-            const employee = employees.find(emp => emp.id === id);
+        async function editEmployee(id) {
+            const employee = await getEmployee(id);
             if (employee) {
                 document.getElementById('employeeId').value = employee.id;
-                document.getElementById('employeeName').value = employee.name;
                 document.getElementById('employeePosition').value = employee.position;
                 document.getElementById('employeeDepartment').value = employee.department;
                 document.getElementById('employeeLocation').value = employee.location;
                 document.getElementById('employeeLevel').value = employee.level;
                 document.getElementById('employeeYears').value = employee.years || '';
-                document.getElementById('employeeEmail').value = employee.email || '';
-                document.getElementById('employeePhone').value = employee.phone || '';
                 document.getElementById('employeeAvatar').value = employee.avatar || '';
                 document.getElementById('employeeBio').value = employee.bio || '';
                 
-                showMessage(`Editing employee: ${employee.name}`);
-            }
-        }
-
-        // Function to delete employee
-        function deleteEmployee(id) {
-            if (confirm('Are you sure you want to delete this employee?')) {
-                employees = employees.filter(emp => emp.id !== id);
-                renderEmployeeList();
-                clearForm();
-                showMessage('Employee deleted successfully');
+                showMessage(`Editing employee: ${employee.position}`);
+                
+                // Scroll to form
+                document.querySelector('.admin-form').scrollIntoView({ behavior: 'smooth' });
             }
         }
 
         // Form submit handler
-        employeeForm.addEventListener('submit', function(e) {
+        employeeForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const id = document.getElementById('employeeId').value;
-            const name = document.getElementById('employeeName').value;
             const position = document.getElementById('employeePosition').value;
             const department = document.getElementById('employeeDepartment').value;
             const location = document.getElementById('employeeLocation').value;
             const level = document.getElementById('employeeLevel').value;
             const years = parseInt(document.getElementById('employeeYears').value) || 0;
-            const email = document.getElementById('employeeEmail').value;
-            const phone = document.getElementById('employeePhone').value;
             const avatar = document.getElementById('employeeAvatar').value;
             const bio = document.getElementById('employeeBio').value;
             
+            const employeeData = {
+                position,
+                department,
+                location,
+                avatar,
+                level,
+                years,
+                bio
+            };
+            
             if (id) {
                 // Update existing employee
-                const index = employees.findIndex(emp => emp.id == id);
-                if (index !== -1) {
-                    employees[index] = {
-                        ...employees[index],
-                        name,
-                        position,
-                        department,
-                        location,
-                        level,
-                        years,
-                        email,
-                        phone,
-                        avatar,
-                        bio
-                    };
-                    showMessage(`Employee updated: ${name}`);
-                }
+                await updateEmployee(id, employeeData);
             } else {
                 // Add new employee
-                const newId = employees.length > 0 ? Math.max(...employees.map(e => e.id)) + 1 : 1;
-                employees.push({
-                    id: newId,
-                    name,
-                    position,
-                    department,
-                    location,
-                    level,
-                    years,
-                    email,
-                    phone,
-                    avatar,
-                    bio
-                });
-                showMessage(`Employee added: ${name}`);
+                await createEmployee(employeeData);
             }
             
-            renderEmployeeList();
             clearForm();
         });
 
         // Initialize the page
         document.addEventListener('DOMContentLoaded', () => {
-            renderEmployeeList();
+            fetchEmployees();
         });
     </script>
 </body>
