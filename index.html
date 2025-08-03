@@ -568,7 +568,7 @@
         color: var(--color-white);
       }
 
-      /* Navigation - Exact from Chevron */
+      /* Navigation - Enhanced with Hamburger Menu */
       .nav-2023 {
         background-color: var(--color-white);
         border-bottom: 1px solid #dee2e6;
@@ -583,6 +583,7 @@
         align-items: center;
         justify-content: space-between;
         padding: 1rem 0;
+        position: relative;
       }
 
       .nav-2023-hallmark img {
@@ -613,6 +614,130 @@
 
       .nav-2023-link:hover .cta-underline {
         border-color: var(--color-dark-blue);
+      }
+
+      /* Hamburger Menu Styles */
+      .hamburger {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0.5rem;
+        z-index: 1001;
+      }
+
+      .hamburger .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        transition: all 0.3s ease;
+        background-color: var(--color-dark-blue);
+        border-radius: 2px;
+      }
+
+      .mobile-nav {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: 280px;
+        height: 100vh;
+        background-color: var(--color-white);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        transition: right 0.3s ease;
+        padding: 80px 20px 20px;
+        overflow-y: auto;
+      }
+
+      .mobile-nav.active {
+        right: 0;
+      }
+
+      .mobile-nav-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .mobile-nav-item {
+        margin-bottom: 1rem;
+      }
+
+      .mobile-nav-link {
+        display: block;
+        padding: 0.75rem 1rem;
+        text-decoration: none;
+        color: var(--color-dark-gray);
+        font-weight: 500;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+      }
+
+      .mobile-nav-link:hover {
+        background-color: rgba(11, 45, 113, 0.05);
+        color: var(--color-dark-blue);
+      }
+
+      .mobile-nav-link .cta-underline {
+        border-bottom: 2px solid transparent;
+      }
+
+      .mobile-nav-link:hover .cta-underline {
+        border-color: var(--color-dark-blue);
+      }
+
+      .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+      }
+
+      .overlay.active {
+        display: block;
+      }
+
+      .close-mobile-nav {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: var(--color-dark-gray);
+        cursor: pointer;
+      }
+
+      @media (max-width: 992px) {
+        .hamburger {
+          display: block;
+        }
+
+        .hamburger.active .bar:nth-child(1) {
+          transform: translateY(8px) rotate(45deg);
+        }
+
+        .hamburger.active .bar:nth-child(2) {
+          opacity: 0;
+        }
+
+        .hamburger.active .bar:nth-child(3) {
+          transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .nav-2023-list {
+          display: none;
+        }
+
+        .mobile-nav {
+          display: block;
+        }
       }
 
       /* Hero Section - C74 Style */
@@ -670,51 +795,6 @@
         max-width: 600px;
         margin: 0 auto;
         font-size: 1.25rem;
-      }
-
-      /* Search Section - Simplified */
-      .search-section {
-        background-color: var(--color-white);
-        padding: 2rem 0;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        position: sticky;
-        top: 80px;
-        z-index: 999;
-      }
-
-      .search-container {
-        display: flex;
-        justify-content: center;
-      }
-
-      .search-box {
-        max-width: 500px;
-        width: 100%;
-        position: relative;
-      }
-
-      .search-box input {
-        width: 100%;
-        padding: 0.75rem 1rem 0.75rem 3rem;
-        border: 2px solid #dee2e6;
-        border-radius: 8px;
-        font-size: 1rem;
-        font-family: inherit;
-        transition: border-color 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      .search-box input:focus {
-        outline: none;
-        border-color: var(--color-dark-blue);
-        box-shadow: 0 0 0 3px rgba(11, 45, 113, 0.1);
-      }
-
-      .search-box i {
-        position: absolute;
-        left: 1rem;
-        top: 50%;
-        transform: translateY(-50%);
-        color: var(--color-medium-gray);
       }
 
       /* Employee Grid - Enhanced Professional Design */
@@ -978,7 +1058,7 @@
         font-weight: 500;
       }
 
-      /* Footer - Chevron Style */
+      /* Footer - Enhanced with All Links Visible */
       .footer-2023 {
         background-color: var(--color-dark-blue);
         color: var(--color-white);
@@ -1007,46 +1087,48 @@
         flex: 2;
       }
 
-      .accordion-item {
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        margin-bottom: 1rem;
+      .footer-section {
+        margin-bottom: 2rem;
       }
 
-      .accordion-button {
-        background: none;
-        border: none;
-        color: var(--color-white);
+      .footer-section-title {
         font-size: 1.1rem;
         font-weight: 600;
         text-transform: lowercase;
-        padding: 1rem 0;
-        width: 100%;
-        text-align: left;
-        cursor: pointer;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
       }
 
-      .accordion-collapse {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease;
+      .footer-links {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1.5rem;
       }
 
-      .accordion-collapse.show {
-        max-height: 500px;
-      }
-
-      .accordion-list-item {
+      .footer-link-item {
         margin-bottom: 0.75rem;
       }
 
-      .accordion-link {
+      .footer-link {
         color: rgba(255, 255, 255, 0.8);
         text-decoration: none;
         transition: color 0.3s ease;
+        display: inline-block;
+        padding: 0.25rem 0;
       }
 
-      .accordion-link:hover {
+      .footer-link:hover {
         color: var(--color-white);
+      }
+
+      .footer-link .cta-underline {
+        border-bottom: 1px solid transparent;
+        transition: border-color 0.3s ease;
+      }
+
+      .footer-link:hover .cta-underline {
+        border-color: var(--color-light-blue);
       }
 
       .copyright {
@@ -1059,10 +1141,6 @@
 
       /* Responsive Design */
       @media (max-width: 992px) {
-        .nav-2023-list {
-          display: none;
-        }
-
         .type-display {
           font-size: 2.5rem;
         }
@@ -1109,6 +1187,10 @@
         .employee-details {
           padding: 1.5rem;
         }
+        
+        .footer-links {
+          grid-template-columns: 1fr;
+        }
       }
 
       /* Loading Animation */
@@ -1125,6 +1207,23 @@
 
       .employee-card {
         animation: fadeIn 0.6s ease-out;
+      }
+
+      /* Loading spinner */
+      .spinner {
+        border: 4px solid rgba(0, 0, 0, 0.1);
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border-left-color: var(--color-dark-blue);
+        animation: spin 1s linear infinite;
+        margin: 2rem auto;
+        display: none;
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
       }
 
       /* CTA Link styles for consistency */
@@ -1161,6 +1260,8 @@
               alt="Chevron"
             />
           </a>
+          
+          <!-- Desktop Navigation -->
           <ul class="nav-2023-list nav-2023-list-level-2">
             <li class="nav-2023-item">
               <a
@@ -1219,8 +1320,79 @@
               </a>
             </li>
           </ul>
+          
+          <!-- Hamburger Button -->
+          <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </button>
         </nav>
       </header>
+      
+      <!-- Mobile Navigation -->
+      <div class="overlay" id="overlay"></div>
+      <div class="mobile-nav" id="mobileNav">
+        <button class="close-mobile-nav" id="closeMobileNav" aria-label="Close menu">
+          <i class="fas fa-times"></i>
+        </button>
+        <ul class="mobile-nav-list">
+          <li class="mobile-nav-item">
+            <a
+              class="mobile-nav-link cta-link"
+              href="https://www.chevron.com/who-we-are"
+              target=""
+            >
+              <span class="cta-underline">who we are</span>
+            </a>
+          </li>
+          <li class="mobile-nav-item">
+            <a
+              class="mobile-nav-link cta-link"
+              href="https://www.chevron.com/what-we-do"
+              target=""
+            >
+              <span class="cta-underline">what we do</span>
+            </a>
+          </li>
+          <li class="mobile-nav-item">
+            <a
+              class="mobile-nav-link cta-link"
+              href="https://www.chevron.com/sustainability"
+              target=""
+            >
+              <span class="cta-underline">sustainability</span>
+            </a>
+          </li>
+          <li class="mobile-nav-item">
+            <a
+              class="mobile-nav-link cta-link"
+              href="https://www.chevron.com/investors"
+              target=""
+            >
+              <span class="cta-underline">investors</span>
+            </a>
+          </li>
+          <li class="mobile-nav-item">
+            <a
+              href="https://www.chevron.com/newsroom"
+              class="mobile-nav-link cta-link"
+              target=""
+            >
+              <span class="cta-underline">newsroom</span>
+            </a>
+          </li>
+          <li class="mobile-nav-item">
+            <a
+              href="https://www.chevron.com/who-we-are/contact/jobs"
+              class="mobile-nav-link cta-link"
+              target=""
+            >
+              <span class="cta-underline">careers</span>
+            </a>
+          </li>
+        </ul>
+      </div>
 
       <main role="main" id="main-content" tabindex="-1">
         <!-- Hero Section -->
@@ -1256,21 +1428,7 @@
           </div>
         </div>
 
-        <!-- Search Section -->
-        <!-- <section class="search-section">
-            
-          <div class="search-container width-1200">
-            <div class="search-box">
-              <i class="fas fa-search"></i>
-              <input
-                type="text"
-                id="searchInput"
-                placeholder="search employees by position or department..."
-              />
-            </div>
-          </div>
-        </section> -->
-
+        <!-- Slider Section -->
         <section
           class="slider-section container-fluid background-color-offwhite"
         >
@@ -1325,10 +1483,11 @@
                   </div>
                   <div class="slide">
                     <img
-                    https://plus.unsplash.com/premium_photo-1664910360093-bc19787042ca?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-                    src="https://plus.unsplash.com/premium_photo-1664300121717-903f7c18decc?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="Offshore Drilling Technology" class="slide__image"
-                    loading="lazy" />
+                      src="https://plus.unsplash.com/premium_photo-1664300121717-903f7c18decc?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      alt="Offshore Drilling Technology" 
+                      class="slide__image"
+                      loading="lazy" 
+                    />
                     <div class="slide__overlay">
                       <h3 class="slide__title">technological innovation</h3>
                       <p class="slide__description">
@@ -1409,7 +1568,8 @@
         >
           <div class="width-1200">
             <div id="employeesGrid" class="employees-grid">
-              <!-- Employee cards will be populated by JavaScript -->
+              <!-- Loading spinner will appear here -->
+              <div class="spinner" id="loadingSpinner"></div>
             </div>
           </div>
         </section>
@@ -1445,7 +1605,7 @@
         </div>
       </main>
 
-      <!-- Footer -->
+      <!-- Footer - Enhanced with All Links Visible -->
       <footer
         class="footer-2023 container-fluid background-color-dark-blue"
         data-cvx-module-name="footer"
@@ -1469,41 +1629,82 @@
             </div>
           </div>
           <div class="right-col">
-            <div class="accordion">
-              <div class="accordion-item">
-                <button
-                  class="accordion-button type-cta text-reduced"
-                  onclick="toggleAccordion(0)"
-                >
-                  get to know us
-                </button>
-                <ul class="accordion-collapse" id="collapse-0">
-                  <li class="accordion-list-item type-body text-reduced">
+            <div class="footer-section">
+              <h3 class="footer-section-title">get to know us</h3>
+              <div class="footer-links">
+                <div>
+                  <div class="footer-link-item">
                     <a
                       href="https://www.chevron.com/who-we-are/contact"
-                      class="cta-link accordion-link"
+                      class="footer-link"
                       ><span class="cta-underline">contact us</span></a
                     >
-                  </li>
-                  <li class="accordion-list-item type-body text-reduced">
+                  </div>
+                  <div class="footer-link-item">
                     <a
                       href="https://www.chevron.com/"
-                      class="cta-link accordion-link"
+                      class="footer-link"
                       ><span class="cta-underline"
                         >find a service station</span
                       ></a
                     >
-                  </li>
-                  <li class="accordion-list-item type-body text-reduced">
+                  </div>
+                  <div class="footer-link-item">
                     <a
                       href="https://www.chevron.com/"
-                      class="cta-link accordion-link"
+                      class="footer-link"
                       ><span class="cta-underline"
                         >chevron texaco rewards</span
                       ></a
                     >
-                  </li>
-                </ul>
+                  </div>
+                </div>
+                <div>
+                  <div class="footer-link-item">
+                    <a
+                      href="https://www.chevron.com/who-we-are"
+                      class="footer-link"
+                      ><span class="cta-underline">who we are</span></a
+                    >
+                  </div>
+                  <div class="footer-link-item">
+                    <a
+                      href="https://www.chevron.com/what-we-do"
+                      class="footer-link"
+                      ><span class="cta-underline">what we do</span></a
+                    >
+                  </div>
+                  <div class="footer-link-item">
+                    <a
+                      href="https://www.chevron.com/sustainability"
+                      class="footer-link"
+                      ><span class="cta-underline">sustainability</span></a
+                    >
+                  </div>
+                </div>
+                <div>
+                  <div class="footer-link-item">
+                    <a
+                      href="https://www.chevron.com/investors"
+                      class="footer-link"
+                      ><span class="cta-underline">investors</span></a
+                    >
+                  </div>
+                  <div class="footer-link-item">
+                    <a
+                      href="https://www.chevron.com/newsroom"
+                      class="footer-link"
+                      ><span class="cta-underline">newsroom</span></a
+                    >
+                  </div>
+                  <div class="footer-link-item">
+                    <a
+                      href="https://www.chevron.com/who-we-are/contact/jobs"
+                      class="footer-link"
+                      ><span class="cta-underline">careers</span></a
+                    >
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1515,96 +1716,133 @@
     </div>
 
     <script>
-      // Enhanced professional employee data with comprehensive bios
+      // API URL for employee data
+      const API_URL = "https://seok-young.online/mezie-api/employee";
+      let allEmployees = [];
+
       // Function to render employees with enhanced professional design
       function renderEmployees(employeeList) {
         const grid = document.getElementById("employeesGrid");
-        grid.innerHTML = "";
-
-        if (employeeList.length === 0) {
+        
+        if (!employeeList || employeeList.length === 0) {
           grid.innerHTML = `
-                    <div style="grid-column: 1/-1; text-align: center; padding: 4rem 0; color: var(--color-medium-gray);">
-                        <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
-                        <h3 style="margin-bottom: 0.5rem;">no employees found</h3>
-                        <p>try adjusting your search criteria</p>
-                    </div>
-                `;
+            <div style="grid-column: 1/-1; text-align: center; padding: 4rem 0; color: var(--color-medium-gray);">
+              <i class="fas fa-users-slash" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+              <h3 style="margin-bottom: 0.5rem;">no employees found</h3>
+              <p>try again later</p>
+            </div>
+          `;
           return;
         }
 
+        let cardsHTML = "";
         employeeList.forEach((employee, index) => {
-          const card = document.createElement("div");
-          card.className = "employee-card";
-          card.style.animationDelay = `${index * 0.1}s`;
-
-          card.innerHTML = `
-                    <div class="employee-header">
-                        <div class="employee-avatar">
-                            <img src="${employee.avatar}" alt="Employee Avatar" loading="lazy">
-                        </div>
-                        <div class="employee-position">${employee.position}</div>
-                    </div>
-                    <div class="employee-details">
-                        <div class="employee-department">${employee.department}</div>
-                        <div class="employee-info">
-                            <div class="info-item">
-                                <div class="info-label">experience</div>
-                                <div class="info-value">${employee.years} years</div>
-                            </div>
-                            <div class="info-item">
-                                <div class="info-label">level</div>
-                                <div class="info-value">${employee.level}</div>
-                            </div>
-                            <div class="info-item">
-                                <div class="info-label">location</div>
-                                <div class="info-value">${employee.location}</div>
-                            </div>
-                            <div class="info-item">
-                                <div class="info-label">department</div>
-                                <div class="info-value">${employee.department}</div>
-                            </div>
-                        </div>
-                        <div class="employee-bio">
-                            <div class="bio-label">
-                                <i class="fas fa-user-circle" style="color: var(--color-dark-blue);"></i>
-                                professional biography
-                            </div>
-                            <div class="bio-text">${employee.bio}</div>
-                        </div>
-                    </div>
-                `;
-
-          grid.appendChild(card);
+          cardsHTML += `
+            <div class="employee-card" style="animation-delay: ${index * 0.1}s">
+              <div class="employee-header">
+                <div class="employee-avatar">
+                  <img src="${employee.avatar}" alt="${employee.position}" loading="lazy">
+                </div>
+                <div class="employee-position">${employee.position}</div>
+              </div>
+              <div class="employee-details">
+                <div class="employee-department">${employee.department}</div>
+                <div class="employee-info">
+                  <div class="info-item">
+                    <div class="info-label">experience</div>
+                    <div class="info-value">${employee.years} years</div>
+                  </div>
+                  <div class="info-item">
+                    <div class="info-label">level</div>
+                    <div class="info-value">${employee.level}</div>
+                  </div>
+                  <div class="info-item">
+                    <div class="info-label">location</div>
+                    <div class="info-value">${employee.location}</div>
+                  </div>
+                  <div class="info-item">
+                    <div class="info-label">department</div>
+                    <div class="info-value">${employee.department}</div>
+                  </div>
+                </div>
+                <div class="employee-bio">
+                  <div class="bio-label">
+                    <i class="fas fa-user-circle" style="color: var(--color-dark-blue);"></i>
+                    professional biography
+                  </div>
+                  <div class="bio-text">${employee.bio}</div>
+                </div>
+              </div>
+            </div>
+          `;
         });
+        
+        grid.innerHTML = cardsHTML;
       }
-
-      let allEmployees = [];
 
       // Function to fetch employees from API
       async function fetchEmployees() {
+        const spinner = document.getElementById('loadingSpinner');
+        const grid = document.getElementById("employeesGrid");
+        
         try {
-          const response = await fetch(
-            "https://seok-young.online/mezie-api/employee"
-          );
+          // Show loading spinner
+          spinner.style.display = 'block';
+          
+          const response = await fetch(API_URL);
+          
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          
           const data = await response.json();
-
-          if (data.status === 200) {
+          
+          if (data.status === 200 && data.employees && data.employees.length > 0) {
             allEmployees = data.employees;
             renderEmployees(allEmployees);
           } else {
-            throw new Error("Failed to fetch employees");
+            throw new Error("No employees found in response");
           }
         } catch (error) {
           console.error("Error fetching employees:", error);
-          const grid = document.getElementById("employeesGrid");
           grid.innerHTML = `
-      <div style="grid-column: 1/-1; text-align: center; padding: 4rem 0; color: var(--color-medium-gray);">
-        <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
-        <h3 style="margin-bottom: 0.5rem;">Failed to load employee data</h3>
-        <p>Please try again later</p>
-      </div>
-    `;
+            <div style="grid-column: 1/-1; text-align: center; padding: 4rem 0; color: var(--color-medium-gray);">
+              <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+              <h3 style="margin-bottom: 0.5rem;">Failed to load employee data</h3>
+              <p>Please try again later</p>
+              <button onclick="fetchEmployees()" style="margin-top: 1rem; padding: 0.5rem 1rem; background: var(--color-dark-blue); color: white; border: none; border-radius: 4px; cursor: pointer;">
+                <i class="fas fa-redo"></i> Retry
+              </button>
+            </div>
+          `;
+        } finally {
+          // Hide loading spinner
+          spinner.style.display = 'none';
         }
+      }
+
+      // Mobile Navigation Functionality
+      function initMobileNav() {
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobileNav');
+        const overlay = document.getElementById('overlay');
+        const closeBtn = document.getElementById('closeMobileNav');
+        
+        function toggleMobileMenu() {
+          hamburger.classList.toggle('active');
+          mobileNav.classList.toggle('active');
+          overlay.classList.toggle('active');
+          document.body.classList.toggle('no-scroll');
+        }
+        
+        hamburger.addEventListener('click', toggleMobileMenu);
+        closeBtn.addEventListener('click', toggleMobileMenu);
+        overlay.addEventListener('click', toggleMobileMenu);
+        
+        // Close menu when clicking on links
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+          link.addEventListener('click', toggleMobileMenu);
+        });
       }
 
       // Function to filter employees with enhanced search
@@ -1614,7 +1852,7 @@
           .value.toLowerCase()
           .trim();
 
-        const filtered = employees.filter((employee) => {
+        const filtered = allEmployees.filter((employee) => {
           if (!searchTerm) return true;
 
           return (
@@ -1629,34 +1867,17 @@
         renderEmployees(filtered);
       }
 
-      // Function to toggle accordion sections
-      function toggleAccordion(index) {
-        const collapse = document.getElementById(`collapse-${index}`);
-        const isShown = collapse.classList.contains("show");
-
-        // Close all accordion sections
-        document.querySelectorAll(".accordion-collapse").forEach((el) => {
-          el.classList.remove("show");
-        });
-
-        // Toggle the clicked section
-        if (!isShown) {
-          collapse.classList.add("show");
-        }
-      }
-
       // Initialize the page
       document.addEventListener("DOMContentLoaded", () => {
-
+        // Fetch employees from API
         fetchEmployees();
-
-        // Render all employees initially
-        renderEmployees(employees);
         
-
+        // Initialize mobile navigation
+        initMobileNav();
+        
         // Add event listener for search with debouncing
         let searchTimeout;
-        document.getElementById("searchInput").addEventListener("input", () => {
+        document.getElementById("searchInput")?.addEventListener("input", () => {
           clearTimeout(searchTimeout);
           searchTimeout = setTimeout(filterEmployees, 300);
         });
@@ -1670,14 +1891,14 @@
             document.activeElement.tagName !== "INPUT"
           ) {
             e.preventDefault();
-            document.getElementById("searchInput").focus();
+            document.getElementById("searchInput")?.focus();
           }
 
           if (e.ctrlKey || e.metaKey) {
             switch (e.key) {
               case "k":
                 e.preventDefault();
-                document.getElementById("searchInput").focus();
+                document.getElementById("searchInput")?.focus();
                 break;
               case "r":
                 e.preventDefault();
