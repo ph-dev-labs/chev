@@ -1515,10 +1515,69 @@
     </div>
 
     <script>
-      // Remove the hardcoded employees array
-      // Replace with API fetch call
+      // Enhanced professional employee data with comprehensive bios
+      // Function to render employees with enhanced professional design
+      function renderEmployees(employeeList) {
+        const grid = document.getElementById("employeesGrid");
+        grid.innerHTML = "";
 
-      // Global variable to store fetched employees
+        if (employeeList.length === 0) {
+          grid.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 4rem 0; color: var(--color-medium-gray);">
+                        <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                        <h3 style="margin-bottom: 0.5rem;">no employees found</h3>
+                        <p>try adjusting your search criteria</p>
+                    </div>
+                `;
+          return;
+        }
+
+        employeeList.forEach((employee, index) => {
+          const card = document.createElement("div");
+          card.className = "employee-card";
+          card.style.animationDelay = `${index * 0.1}s`;
+
+          card.innerHTML = `
+                    <div class="employee-header">
+                        <div class="employee-avatar">
+                            <img src="${employee.avatar}" alt="Employee Avatar" loading="lazy">
+                        </div>
+                        <div class="employee-position">${employee.position}</div>
+                    </div>
+                    <div class="employee-details">
+                        <div class="employee-department">${employee.department}</div>
+                        <div class="employee-info">
+                            <div class="info-item">
+                                <div class="info-label">experience</div>
+                                <div class="info-value">${employee.years} years</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">level</div>
+                                <div class="info-value">${employee.level}</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">location</div>
+                                <div class="info-value">${employee.location}</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">department</div>
+                                <div class="info-value">${employee.department}</div>
+                            </div>
+                        </div>
+                        <div class="employee-bio">
+                            <div class="bio-label">
+                                <i class="fas fa-user-circle" style="color: var(--color-dark-blue);"></i>
+                                professional biography
+                            </div>
+                            <div class="bio-text">${employee.bio}</div>
+                        </div>
+                    </div>
+                `;
+
+          grid.appendChild(card);
+        });
+      }
+
       let allEmployees = [];
 
       // Function to fetch employees from API
@@ -1528,7 +1587,6 @@
             "https://seok-young.online/mezie-api/employee"
           );
           const data = await response.json();
-          console.log(data)
 
           if (data.status === 200) {
             allEmployees = data.employees;
@@ -1540,32 +1598,23 @@
           console.error("Error fetching employees:", error);
           const grid = document.getElementById("employeesGrid");
           grid.innerHTML = `
-            <div style="grid-column: 1/-1; text-align: center; padding: 4rem 0; color: var(--color-medium-gray);">
-              <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
-              <h3 style="margin-bottom: 0.5rem;">Failed to load employee data</h3>
-              <p>Please try again later</p>
-            </div>
-          `;
+      <div style="grid-column: 1/-1; text-align: center; padding: 4rem 0; color: var(--color-medium-gray);">
+        <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+        <h3 style="margin-bottom: 0.5rem;">Failed to load employee data</h3>
+        <p>Please try again later</p>
+      </div>
+    `;
         }
       }
 
-      // Update DOMContentLoaded event
-      document.addEventListener("DOMContentLoaded", () => {
-        // Fetch employees from API instead of using demo data
-        fetchEmployees();
-
-        // Rest of your existing initialization code...
-        // (search functionality, accordion, etc.)
-      });
-
-      // Update filterEmployees function to use allEmployees
+      // Function to filter employees with enhanced search
       function filterEmployees() {
         const searchTerm = document
           .getElementById("searchInput")
           .value.toLowerCase()
           .trim();
 
-        const filtered = allEmployees.filter((employee) => {
+        const filtered = employees.filter((employee) => {
           if (!searchTerm) return true;
 
           return (
@@ -1580,9 +1629,89 @@
         renderEmployees(filtered);
       }
 
-      // The renderEmployees function remains the same
-      // It will now use the data from the API
+      // Function to toggle accordion sections
+      function toggleAccordion(index) {
+        const collapse = document.getElementById(`collapse-${index}`);
+        const isShown = collapse.classList.contains("show");
+
+        // Close all accordion sections
+        document.querySelectorAll(".accordion-collapse").forEach((el) => {
+          el.classList.remove("show");
+        });
+
+        // Toggle the clicked section
+        if (!isShown) {
+          collapse.classList.add("show");
+        }
+      }
+
+      // Initialize the page
+      document.addEventListener("DOMContentLoaded", () => {
+
+        fetchEmployees();
+
+        // Render all employees initially
+        renderEmployees(employees);
+        
+
+        // Add event listener for search with debouncing
+        let searchTimeout;
+        document.getElementById("searchInput").addEventListener("input", () => {
+          clearTimeout(searchTimeout);
+          searchTimeout = setTimeout(filterEmployees, 300);
+        });
+
+        // Add keyboard navigation for accessibility
+        document.addEventListener("keydown", (e) => {
+          if (
+            e.key === "/" &&
+            !e.ctrlKey &&
+            !e.metaKey &&
+            document.activeElement.tagName !== "INPUT"
+          ) {
+            e.preventDefault();
+            document.getElementById("searchInput").focus();
+          }
+
+          if (e.ctrlKey || e.metaKey) {
+            switch (e.key) {
+              case "k":
+                e.preventDefault();
+                document.getElementById("searchInput").focus();
+                break;
+              case "r":
+                e.preventDefault();
+                document.getElementById("searchInput").value = "";
+                filterEmployees();
+                break;
+            }
+          }
+        });
+
+        // Add smooth scrolling animation observer
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = "1";
+              entry.target.style.transform = "translateY(0)";
+            }
+          });
+        }, observerOptions);
+
+        // Observe employee cards for scroll animations
+        setTimeout(() => {
+          document.querySelectorAll(".employee-card").forEach((card) => {
+            observer.observe(card);
+          });
+        }, 100);
+      });
     </script>
+
     <script>
       // Enhanced Image Slider with Auto-play and Professional Features
       class ChevronSlider {
