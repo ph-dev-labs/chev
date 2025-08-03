@@ -22,7 +22,9 @@
     <meta name="title" content="Employee Directory" />
     <meta
       name="description"
-      content="Meet our global team of professionals driving innovation and excellence across Chevron's energy operations worldwide."
+      content="Our Singapore regional team leads the charge in driving
+      innovation and delivering energy excellence across Chevron's
+      operations on Jurong Island and throughout Pacific Asia."
     />
 
     <link
@@ -1187,7 +1189,7 @@
         .employee-details {
           padding: 1.5rem;
         }
-        
+
         .footer-links {
           grid-template-columns: 1fr;
         }
@@ -1222,8 +1224,12 @@
       }
 
       @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
       }
 
       /* CTA Link styles for consistency */
@@ -1260,7 +1266,7 @@
               alt="Chevron"
             />
           </a>
-          
+
           <!-- Desktop Navigation -->
           <ul class="nav-2023-list nav-2023-list-level-2">
             <li class="nav-2023-item">
@@ -1320,20 +1326,28 @@
               </a>
             </li>
           </ul>
-          
+
           <!-- Hamburger Button -->
-          <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+          <button
+            class="hamburger"
+            id="hamburger"
+            aria-label="Toggle navigation"
+          >
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
           </button>
         </nav>
       </header>
-      
+
       <!-- Mobile Navigation -->
       <div class="overlay" id="overlay"></div>
       <div class="mobile-nav" id="mobileNav">
-        <button class="close-mobile-nav" id="closeMobileNav" aria-label="Close menu">
+        <button
+          class="close-mobile-nav"
+          id="closeMobileNav"
+          aria-label="Close menu"
+        >
           <i class="fas fa-times"></i>
         </button>
         <ul class="mobile-nav-list">
@@ -1484,9 +1498,9 @@
                   <div class="slide">
                     <img
                       src="https://plus.unsplash.com/premium_photo-1664300121717-903f7c18decc?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                      alt="Offshore Drilling Technology" 
+                      alt="Offshore Drilling Technology"
                       class="slide__image"
-                      loading="lazy" 
+                      loading="lazy"
                     />
                     <div class="slide__overlay">
                       <h3 class="slide__title">technological innovation</h3>
@@ -1641,18 +1655,14 @@
                     >
                   </div>
                   <div class="footer-link-item">
-                    <a
-                      href="https://www.chevron.com/"
-                      class="footer-link"
+                    <a href="https://www.chevron.com/" class="footer-link"
                       ><span class="cta-underline"
                         >find a service station</span
                       ></a
                     >
                   </div>
                   <div class="footer-link-item">
-                    <a
-                      href="https://www.chevron.com/"
-                      class="footer-link"
+                    <a href="https://www.chevron.com/" class="footer-link"
                       ><span class="cta-underline"
                         >chevron texaco rewards</span
                       ></a
@@ -1723,7 +1733,7 @@
       // Function to render employees with enhanced professional design
       function renderEmployees(employeeList) {
         const grid = document.getElementById("employeesGrid");
-        
+
         if (!employeeList || employeeList.length === 0) {
           grid.innerHTML = `
             <div style="grid-column: 1/-1; text-align: center; padding: 4rem 0; color: var(--color-medium-gray);">
@@ -1741,7 +1751,9 @@
             <div class="employee-card" style="animation-delay: ${index * 0.1}s">
               <div class="employee-header">
                 <div class="employee-avatar">
-                  <img src="${employee.avatar}" alt="${employee.position}" loading="lazy">
+                  <img src="${employee.avatar}" alt="${
+            employee.position
+          }" loading="lazy">
                 </div>
                 <div class="employee-position">${employee.position}</div>
               </div>
@@ -1776,28 +1788,32 @@
             </div>
           `;
         });
-        
+
         grid.innerHTML = cardsHTML;
       }
 
       // Function to fetch employees from API
       async function fetchEmployees() {
-        const spinner = document.getElementById('loadingSpinner');
+        const spinner = document.getElementById("loadingSpinner");
         const grid = document.getElementById("employeesGrid");
-        
+
         try {
           // Show loading spinner
-          spinner.style.display = 'block';
-          
+          spinner.style.display = "block";
+
           const response = await fetch(API_URL);
-          
+
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
           }
-          
+
           const data = await response.json();
-          
-          if (data.status === 200 && data.employees && data.employees.length > 0) {
+
+          if (
+            data.status === 200 &&
+            data.employees &&
+            data.employees.length > 0
+          ) {
             allEmployees = data.employees;
             renderEmployees(allEmployees);
           } else {
@@ -1817,31 +1833,31 @@
           `;
         } finally {
           // Hide loading spinner
-          spinner.style.display = 'none';
+          spinner.style.display = "none";
         }
       }
 
       // Mobile Navigation Functionality
       function initMobileNav() {
-        const hamburger = document.getElementById('hamburger');
-        const mobileNav = document.getElementById('mobileNav');
-        const overlay = document.getElementById('overlay');
-        const closeBtn = document.getElementById('closeMobileNav');
-        
+        const hamburger = document.getElementById("hamburger");
+        const mobileNav = document.getElementById("mobileNav");
+        const overlay = document.getElementById("overlay");
+        const closeBtn = document.getElementById("closeMobileNav");
+
         function toggleMobileMenu() {
-          hamburger.classList.toggle('active');
-          mobileNav.classList.toggle('active');
-          overlay.classList.toggle('active');
-          document.body.classList.toggle('no-scroll');
+          hamburger.classList.toggle("active");
+          mobileNav.classList.toggle("active");
+          overlay.classList.toggle("active");
+          document.body.classList.toggle("no-scroll");
         }
-        
-        hamburger.addEventListener('click', toggleMobileMenu);
-        closeBtn.addEventListener('click', toggleMobileMenu);
-        overlay.addEventListener('click', toggleMobileMenu);
-        
+
+        hamburger.addEventListener("click", toggleMobileMenu);
+        closeBtn.addEventListener("click", toggleMobileMenu);
+        overlay.addEventListener("click", toggleMobileMenu);
+
         // Close menu when clicking on links
-        document.querySelectorAll('.mobile-nav-link').forEach(link => {
-          link.addEventListener('click', toggleMobileMenu);
+        document.querySelectorAll(".mobile-nav-link").forEach((link) => {
+          link.addEventListener("click", toggleMobileMenu);
         });
       }
 
@@ -1871,16 +1887,18 @@
       document.addEventListener("DOMContentLoaded", () => {
         // Fetch employees from API
         fetchEmployees();
-        
+
         // Initialize mobile navigation
         initMobileNav();
-        
+
         // Add event listener for search with debouncing
         let searchTimeout;
-        document.getElementById("searchInput")?.addEventListener("input", () => {
-          clearTimeout(searchTimeout);
-          searchTimeout = setTimeout(filterEmployees, 300);
-        });
+        document
+          .getElementById("searchInput")
+          ?.addEventListener("input", () => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(filterEmployees, 300);
+          });
 
         // Add keyboard navigation for accessibility
         document.addEventListener("keydown", (e) => {
